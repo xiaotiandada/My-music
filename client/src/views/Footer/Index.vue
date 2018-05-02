@@ -1,14 +1,13 @@
 <template>
-    <footer class="footer">
-        <div class="links">
-            <p>
-              <template v-for="item in listLink">
-                 <span
-                 v-if="item.liIndex !== 1"
-                :key="item.liIndex">|</span>
-                <a :href="item.liSrc" target="_blank" :key="item.liIndex">{{item.liTitle}}</a>
-               
-              </template>
+  <footer class="footer">
+    <div class="links">
+      <p>
+        <template v-for="item in listLink">
+                   <span
+                   v-if="item.liIndex !== 1"
+                  :key="item.liIndex">|</span>
+                  <a :href="item.liSrc" target="_blank" :key="item.liIndex">{{item.liTitle}}</a>
+</template>
             </p>
         </div>
         <div class="copyright">
@@ -30,11 +29,10 @@
 </template>
 
 <script>
-export default {
-  data() {
-    return {
-      listLink: [
-        {
+  export default {
+    data() {
+      return {
+        listLink: [{
           liIndex: 1,
           liSrc: 'http://www.kugou.com/about/aboutus.html',
           liTitle: '关于酷狗'
@@ -69,12 +67,12 @@ export default {
           liSrc: 'http://www.kugou.com/about/aboutus.html',
           liTitle: '关于酷狗'
         }
-      ]
+        ]
+      }
     }
   }
-}
 </script>
 
 <style>
-
+  
 </style>

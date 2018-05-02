@@ -552,7 +552,10 @@ a.lineAndroid{
     height:14px;
     display: block;
     float: right;
-    background: url("../img/sprite.png") no-repeat 0 -322px;
+    background-image: url("../img/sprite.png");
+    background-repeat: no-repeat;
+    background-position: 0 -322px;
+
 }
 .list{
     overflow: hidden;
@@ -565,11 +568,14 @@ a.lineAndroid{
 .list dl{
     margin: 0;
     padding: 0;
+    overflow: hidden;
 }
 .list dl dt{
     line-height: 24px;
     color: #333;
     font-weight: 700;
+    text-align: left;    
+    margin-left: 10px;    
 }
 .list dl dd{
     width: 180px;
@@ -577,6 +583,10 @@ a.lineAndroid{
     font-size: 14px;
     color: #555;
     margin-left: 10px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    text-align: left;
+    overflow: hidden;
 
 }
 .list dl dd:visited{

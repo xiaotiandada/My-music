@@ -3,7 +3,7 @@
       <div class="logo">
         <h1>酷狗音乐</h1>
         <a href="index.html">
-          <img src="../public/img/logo.png" alt="logo">
+          <img src="../../public/img/logo.png" alt="logo">
         </a>
       </div>
 

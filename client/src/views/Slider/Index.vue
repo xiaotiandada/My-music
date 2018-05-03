@@ -1,6 +1,6 @@
 <template>
   <el-carousel :interval="5000" arrow="always" height="500px">
-    <el-carousel-item v-for="item in sliderImg" :key="item.index" :class="item.src">
+    <el-carousel-item v-for="(item, index) in sliderImg" :key="index" :class="item.src">
     </el-carousel-item>
   </el-carousel>
 </template>

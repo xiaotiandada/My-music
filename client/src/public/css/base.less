@@ -2,10 +2,6 @@
 基本样式 布局
  */
 
-body{
-    margin: 0;
-    padding: 0;
-}
 .fr{
     float: right;
 }
@@ -229,6 +225,8 @@ a{
     padding:0;
     display: none;
 }
+
+
 .secondMenu li{
     list-style: none;
 }
@@ -279,45 +277,45 @@ a{
     background: url(../img/sprite.png) no-repeat;
 }
 .subNav li .icon-nav1{
-    background-position: 0 -120px;
+    background-position: 0 -124px;
 }
 
 .subNav li .icon-nav2{
-    background-position: 0 -156px;
+    background-position: 0 -160px;
 }
 
 .subNav li .icon-nav3{
-    background-position: 0 -192px;
+    background-position: 0 -196px;
 }
 
 .subNav li .icon-nav4{
-    background-position: 0 -228px;
+    background-position: 0 -231px;
 }
 
 .subNav li .icon-nav5{
-    background-position: 0 -282px;
+    background-position: 0 -286px;
 }
 
 
 
 .subNav li .icon-nav1:hover{
-    background-position: 0 -102px;
+    background-position: 0 -106px;
 }
 
 .subNav li .icon-nav2:hover{
-    background-position: 0 -138px;
+    background-position: 0 -142px;
 }
 
 .subNav li .icon-nav3:hover{
-    background-position: 0 -174px;
+    background-position: 0 -178px;
 }
 
 .subNav li .icon-nav4:hover{
-    background-position: 0 -210px;
+    background-position: 0 -213px;
 }
 
 .subNav li .icon-nav5:hover{
-    background-position: 0 -246px;
+    background-position: 0 -250px;
 }
 
 /*一个icon是18px*/
@@ -627,15 +625,15 @@ a.lineAndroid{
 }
 /*选项卡*/
 
-.tab-active{
+.tabActive{
     color: #009af3;
 }
-.tab-show{
-    display: block;
-}
-.tab-hide{
-    display: none;
-}
+// .tab-show{
+//     display: block;
+// }
+// .tab-hide{
+//     display: none;
+// }
 
 
 .itemTwoLeftTextMenu .MenuItem:hover{
@@ -670,7 +668,7 @@ a.lineAndroid{
 .songTips{
     margin: 12px 0 0 10px;
     padding: 12px 0 0 21px;
-    background: url(../img/first.png) no-repeat 0 16px;
+    background: url(../img/first.png) no-repeat 0 10px;
 }
 
 .itemTwoLeftContent{
@@ -699,10 +697,10 @@ a.lineAndroid{
     color: #169af3;
 }
 .itemTwoLeftContent ul li:hover a span.icon-playBtn{
-    background: url(http://static.kgimg.com/common/images/pc_temp_v2/icon_splice.png?20150814) no-repeat 0 -30px;
+    background: url(../img/icon_splice.png) no-repeat 0 -30px;
 }
 .itemTwoLeftContent ul li:hover a span.icon-download{
-    background: url(http://static.kgimg.com/common/images/pc_temp_v2/icon_splice.png?20150814) no-repeat -90px -30px;
+    background: url(../img/icon_splice.png) no-repeat -90px -30px;
 }
 .itemTwoLeftContent ul li a span.icon-Time{
     position: absolute;
@@ -715,14 +713,14 @@ a.lineAndroid{
     right: 80px;
     width: 15px;
     height:15px;
-    background: url(http://static.kgimg.com/common/images/pc_temp_v2/icon_splice.png?20150814) no-repeat;
+    background: url(../img/icon_splice.png) no-repeat;
 
 }
 .itemTwoLeftContent ul li a span.icon-playBtn:hover{
-    background: url(http://static.kgimg.com/common/images/pc_temp_v2/icon_splice.png?20150814) no-repeat 0 -30px;
+    background: url(../img/icon_splice.png) no-repeat 0 -30px;
 }
 .itemTwoLeftContent ul li a span.icon-playBtn:active{
-    background: url(http://static.kgimg.com/common/images/pc_temp_v2/icon_splice.png?20150814) no-repeat 0 -60px;
+    background: url(../img/icon_splice.png) no-repeat 0 -60px;
 }
 .itemTwoLeftContent ul li a span.icon-download{
     position: absolute;
@@ -730,17 +728,22 @@ a.lineAndroid{
     right: 60px;
     width: 15px;
     height:15px;
-    background: url(http://static.kgimg.com/common/images/pc_temp_v2/icon_splice.png?20150814) no-repeat -90px 0;
+    background: url(../img/icon_splice.png) no-repeat -90px 0;
 }
 .itemTwoLeftContent ul li a span.icon-download:hover{
-    background: url(http://static.kgimg.com/common/images/pc_temp_v2/icon_splice.png?20150814) no-repeat -90px -30px;
+    background: url(../img/icon_splice.png) no-repeat -90px -30px;
 }
 .itemTwoLeftContent ul li a span.icon-download:active{
-    background: url(http://static.kgimg.com/common/images/pc_temp_v2/icon_splice.png?20150814) no-repeat -90px -60px;
+    background: url(../img/icon_splice.png) no-repeat -90px -60px;
 }
 
 .pages{
     margin-top: 8px;
+    display: inline-block;
+    _display: inline;
+    height: 9px;
+    margin: 10px auto 0;
+    zoom: 1;
 }
 .pagesCenter{
     width: 70px;
@@ -771,6 +774,7 @@ a.lineAndroid{
 .pagesCenter .pages-currentPage,.pagesCenter .pages-allPage,.pagesCenter{
     font-size: 12px;
     color: #8d8d8d;
+    line-height: 22px;
 }
 
 .itemTiele .xgsf{

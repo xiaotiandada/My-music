@@ -1,6 +1,6 @@
 <template>
   <div class="forbanner">
-    <img src="http://adsfile.bssdlbig.kugou.com/771c168b558167320b7d482cd5768db4.jpg" alt="">
+    <img src="../../public/img/banner.jpg" alt="">
   </div>
 </template>
 

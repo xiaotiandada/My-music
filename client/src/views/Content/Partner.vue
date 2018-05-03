@@ -8,121 +8,11 @@
         </div>
         <div class="itemContent">
             <ul>
-                <li>
+                <li
+                v-for="(item, index) in listParther"
+                :key="index">
                     <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner02.jpg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-    
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-    
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-    
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-    
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-    
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-    
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-    
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-    
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-    
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-    
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-    
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner01.jpg" alt="">
-                    </a>
-                </li>
-    
-                <li>
-                    <a href="#">
-                        <img src="http://static.kgimg.com/public/root//images/logo/partner21.jpg" alt="">
+                        <img :src="item.listSrc" :alt="item.listAlt">
                     </a>
                 </li>
             </ul>
@@ -133,7 +23,12 @@
 
 <script>
     export default {
-    
+      props: {
+        listParther: {
+          type: Array,
+          default: []
+        }
+      }
     }
 </script>
 

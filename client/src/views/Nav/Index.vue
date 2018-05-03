@@ -11,12 +11,12 @@
                 <li>
                     <a href="#" class="normal">下载客户端</a>
                 </li>
-                <li id="more" class="more">
+                <li class="more" @mouseenter="toggleShow" @mouseleave="toggleShow" :class="{navshowmenu: isNavShow}">
                     <a href="#">更多</a>
                     <i class="icon" id="icon"></i>
                 </li>
             </ul>
-            <ul class="secondMenu" id="secondMenu">
+            <ul class="secondMenu" @mouseenter="toggleShow" @mouseleave="toggleShow" :class="{ navshow : isNavShow}">
                 <li><a href="http://www.kugou.com/fmweb/html/index.html">电台</a></li>
                 <li><a href="http://www.kugou.com/mvweb/html/">MV</a></li>
                 <li><a href="http://www.kugou.com/yy/html/special.html">歌单</a></li>
@@ -45,10 +45,26 @@
 
 <script>
     export default {
-    
+      data() {
+        return {
+          isNavShow: false
+        }
+      },
+      methods: {
+        toggleShow: function() {
+          this.isNavShow = !this.isNavShow
+          console.log(this.isNavShow)
+        }
+      }
     }
 </script>
 
 <style>
+    .navshowmenu {
+        background: #0c8ed9;
+    }
     
+    .navshow {
+        display: block;
+    }
 </style>

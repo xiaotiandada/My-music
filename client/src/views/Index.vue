@@ -4,7 +4,7 @@
     <v-nav></v-nav>
     <v-slider :sliderImg="sliderImg"></v-slider>
     <v-content></v-content>
-    <v-footer></v-footer>
+    <v-footer :listLink="listLink"></v-footer>
   </div>
 </template>
 
@@ -25,22 +25,49 @@
     },
     data() {
       return {
-        sliderImg: [{
-          index: '1',
-          src: 'item1'
-        },
-        {
-          index: '2',
-          src: 'item2'
-        },
-        {
-          index: '3',
-          src: 'item3'
-        },
-        {
-          index: '4',
-          src: 'item4'
-        }
+        sliderImg: [
+          {
+            src: 'item1'
+          },
+          {
+            src: 'item2'
+          },
+          {
+            src: 'item3'
+          },
+          {
+            src: 'item4'
+          }
+        ],
+        listLink: [
+          {
+            liSrc: 'http://www.kugou.com/about/aboutus.html',
+            liTitle: '关于酷狗'
+          },
+          {
+            liSrc: 'http://www.kugou.com/about/aboutus.html',
+            liTitle: '关于酷狗'
+          },
+          {
+            liSrc: 'http://www.kugou.com/about/aboutus.html',
+            liTitle: '关于酷狗'
+          },
+          {
+            liSrc: 'http://www.kugou.com/about/aboutus.html',
+            liTitle: '关于酷狗'
+          },
+          {
+            liSrc: 'http://www.kugou.com/about/aboutus.html',
+            liTitle: '关于酷狗'
+          },
+          {
+            liSrc: 'http://www.kugou.com/about/aboutus.html',
+            liTitle: '关于酷狗'
+          },
+          {
+            liSrc: 'http://www.kugou.com/about/aboutus.html',
+            liTitle: '关于酷狗'
+          }
         ]
       }
     }

@@ -1,5 +1,5 @@
 <template>
-    <vodal :show="isShow" animation="door" @hide="clickHideShow">
+    <!-- <vodal :show="isShow" animation="door" @hide="clickHideShow"> -->
       
       <div class="logfrom">
         <el-form label-position="left" :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" class="demo-ruleForm">
@@ -21,17 +21,11 @@
         </el-form>
       </div>
 
-    </vodal>
+    <!-- </vodal> -->
 </template>
 
 <script>
 export default {
-  props: {
-    isShow: {
-      type: Boolean,
-      default: false
-    }
-  },
   data() {
     var checkAge = (rule, value, callback) => {
       if (!value) {
@@ -88,9 +82,6 @@ export default {
     }
   },
   methods: {
-    clickHideShow() {
-      this.$emit('clickHideShow', false)
-    },
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
@@ -109,15 +100,6 @@ export default {
 </script>
 
 <style lang="less">
-  .fullScreen {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    background: rgba(0, 0, 0, .5);
-    z-index: 99;
-  }
   .logfrom{
     padding: 34px;
   }
@@ -128,7 +110,7 @@ export default {
     padding: 0;
     color: #889aa4;
     vertical-align: middle;
-    width: 32px;
+    width: 60px;
     height: 38px;
     display: inline-block;
     font-size: 14px;
@@ -137,7 +119,7 @@ export default {
   .el-input{
     display: inline-block;
     height: 38px;
-    width: 84%;
+    width: 78%;
   }
   .logInput{
     border: 1px solid #e6e6e6;

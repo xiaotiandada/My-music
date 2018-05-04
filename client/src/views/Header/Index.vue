@@ -27,7 +27,9 @@
       <a href="#"
         @click="logClick"
         class="login_btn">登录</a>
-      <a href="#" class="regin_btn">注册</a>
+      <a href="#"
+      @click="logClickReg"
+       class="regin_btn">注册</a>
     </div>
   </header>
 </template>
@@ -41,6 +43,9 @@
     methods: {
       logClick: function() {
         this.$emit('clickToolShow', true)
+      },
+      logClickReg: function() {
+        this.$emit('clickToolShowReg', true)
       }
     }
   }

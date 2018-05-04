@@ -1,11 +1,17 @@
 <template>
   <div>
-    <v-header @clickToolShow="clickToolShow" ></v-header>
+    <v-header @clickToolShow="clickToolShow" @clickToolShowReg="clickToolShowReg"></v-header>
     <v-nav></v-nav>
     <v-slider :sliderImg="sliderImg"></v-slider>
     <v-content></v-content>
     <v-footer :listLink="listLink"></v-footer>
-    <login @clickHideShow="clickHideShow" :isShow="isShow"></login>
+    <vodal :show="isShow" animation="door" @hide="clickHideShow">
+      <login></login>      
+    </vodal>
+
+     <vodal :show="isShowr" :height="400" animation="door" @hide="clickHideShowReg">
+      <registered></registered>      
+    </vodal>
   </div>
 </template>
 
@@ -17,6 +23,7 @@
   import VFooter from './Footer/Index'
 
   import Login from './Login/Index'
+  import Registered from './Registered/Index'
   
   export default {
     components: {
@@ -25,7 +32,8 @@
       VContent,
       VSlider,
       VFooter,
-      Login
+      Login,
+      Registered
     },
     data() {
       return {
@@ -73,15 +81,23 @@
             liTitle: '关于酷狗'
           }
         ],
-        isShow: false
+        isShow: false,
+        isShowr: false
+  
       }
     },
     methods: {
       clickToolShow(status) {
         this.isShow = status
       },
-      clickHideShow(status) {
-        this.isShow = status
+      clickHideShow() {
+        this.isShow = false
+      },
+      clickToolShowReg() {
+        this.isShowr = true
+      },
+      clickHideShowReg() {
+        this.isShowr = false
       }
     }
   }

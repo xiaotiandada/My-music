@@ -6,16 +6,12 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
-
-// Vodal
 import Vodal from 'vodal'
 
 // normalize
 import 'normalize.css'
-
-// include animation styles
 import 'vodal/common.css'
-import 'vodal/zoom.css'
+import 'vodal/door.css'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI)

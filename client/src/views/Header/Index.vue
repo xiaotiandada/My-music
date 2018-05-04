@@ -24,7 +24,9 @@
       </ul>
     </div>
     <div class="login_area">
-      <a href="#" class="login_btn">登录</a>
+      <a href="#"
+        @click="logClick"
+        class="login_btn">登录</a>
       <a href="#" class="regin_btn">注册</a>
     </div>
   </header>
@@ -32,10 +34,17 @@
 
 <script>
   export default {
-  
+    data() {
+      return {
+      }
+    },
+    methods: {
+      logClick: function() {
+        this.$emit('clickToolShow', true)
+      }
+    }
   }
 </script>
 
 <style>
-  
 </style>

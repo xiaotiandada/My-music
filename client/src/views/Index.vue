@@ -1,10 +1,11 @@
 <template>
   <div>
-    <v-header></v-header>
+    <v-header @clickToolShow="clickToolShow" ></v-header>
     <v-nav></v-nav>
     <v-slider :sliderImg="sliderImg"></v-slider>
     <v-content></v-content>
     <v-footer :listLink="listLink"></v-footer>
+    <login @clickHideShow="clickHideShow" :isShow="isShow"></login>
   </div>
 </template>
 
@@ -14,6 +15,8 @@
   import VSlider from './Slider/Index'
   import VContent from './Content/Index'
   import VFooter from './Footer/Index'
+
+  import Login from './Login/Index'
   
   export default {
     components: {
@@ -21,7 +24,8 @@
       VNav,
       VContent,
       VSlider,
-      VFooter
+      VFooter,
+      Login
     },
     data() {
       return {
@@ -68,7 +72,16 @@
             liSrc: 'http://www.kugou.com/about/aboutus.html',
             liTitle: '关于酷狗'
           }
-        ]
+        ],
+        isShow: false
+      }
+    },
+    methods: {
+      clickToolShow(status) {
+        this.isShow = status
+      },
+      clickHideShow(status) {
+        this.isShow = status
       }
     }
   }
@@ -76,4 +89,5 @@
 
 <style lang="less">
   @import '../public/css/base.less';
+
 </style>

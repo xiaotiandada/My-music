@@ -2,13 +2,14 @@
   <div v-if="isShow" class="fullScreen">
     <vodal :show="isShow" animation="zoom" @hide="clickHideShow">
       
-      <div class="from">
-        <el-form label-position="left" :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" label-width="0px" class="demo-ruleForm">
-          <el-form-item prop="username">
-            <span class="logSpan">usernaem</span>
-            <el-input type="text" v-model="ruleForm2.pass" auto-complete="off" placeholder="username" ></el-input>
+      <div class="logfrom">
+        <el-form label-position="left" :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" class="demo-ruleForm">
+          <el-form-item class="logInput" prop="username">
+            <span class="logSpan">账号</span>
+            <el-input  type="text" v-model="ruleForm2.pass" auto-complete="off" placeholder="username" ></el-input>
           </el-form-item>
-          <el-form-item prop="password">
+          <el-form-item class="logInput"  prop="password">
+            <span class="logSpan">密码</span>
             <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" placeholder="password" ></el-input>
           </el-form-item>
           <!-- <el-form-item label="年龄" prop="age">
@@ -110,7 +111,7 @@
   }
 </script>
 
-<style>
+<style lang="less">
   .fullScreen {
     position: fixed;
     top: 0;
@@ -120,13 +121,35 @@
     background: rgba(0, 0, 0, .5);
     z-index: 99;
   }
-  .from{
+  .logfrom{
     padding: 34px;
   }
   .logButton{
     width: 100%;
   }
   .logSpan{
-    display: inline;
+    padding: 0;
+    color: #889aa4;
+    vertical-align: middle;
+    width: 32px;
+    height: 38px;
+    display: inline-block;
+    font-size: 14px;
+    line-height: 42px;
+  }
+  .el-input{
+    display: inline-block;
+    height: 38px;
+    width: 84%;
+  }
+  .logInput{
+    border: 1px solid #e6e6e6;
+    background: transparent;
+    border-radius: 3px;
+    color: #454545;
+    line-height: 38px;
+  }
+  .el-input__inner{
+    border: none;
   }
 </style>

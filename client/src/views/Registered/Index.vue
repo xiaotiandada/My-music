@@ -1,15 +1,13 @@
 <template>
-    <!-- <vodal :show="isShow" animation="door" @hide="clickHideShow"> -->
-      
       <div class="logfrom">
         <el-form label-position="left" :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" class="demo-ruleForm">
           <el-form-item class="logInput" prop="username">
             <span class="logSpan">账号</span>
-            <el-input  type="text" v-model="ruleForm2.pass" auto-complete="off" placeholder="username" ></el-input>
+            <el-input  type="text" v-model="ruleForm2.userName" auto-complete="off" placeholder="username" ></el-input>
           </el-form-item>
           <el-form-item class="logInput"  prop="password">
             <span class="logSpan">密码</span>
-            <el-input type="password" v-model="ruleForm2.checkPass" auto-complete="off" placeholder="password" ></el-input>
+            <el-input type="password" v-model="ruleForm2.pass" auto-complete="off" placeholder="password" ></el-input>
           </el-form-item>
           <el-form-item class="logInput" prop="checkPass">
              <span class="logSpan">确认密码</span>
@@ -24,8 +22,6 @@
           </el-form-item>
         </el-form>
       </div>
-
-    <!-- </vodal> -->
 </template>
 
 <script>
@@ -68,6 +64,7 @@ export default {
     }
     return {
       ruleForm2: {
+        userName: '',
         pass: '',
         checkPass: '',
         age: ''

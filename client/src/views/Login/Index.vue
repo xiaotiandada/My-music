@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import AuthenticationService from '@/services/AuthenticationService'
 export default {
   data() {
     const validateUserName = (rule, value, callback) => {
@@ -54,15 +55,29 @@ export default {
   },
   methods: {
     submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          console.log(valid)
-          alert('submit!')
-        } else {
-          console.log('error submit!!')
-          return false
-        }
+      // this.$refs[formName].validate((valid) => {
+      //   if (valid) {
+      //     console.log(valid)
+      //     console.log(this.ruleForm2)
+      //     // alert('submit!')
+      //   } else {
+      //     console.log('error submit!!')
+      //     return false
+      //   }
+      // })
+      console.log('login' + this.ruleForm2.userName)
+      console.log('login' + this.ruleForm2.pass)
+      AuthenticationService.userLogin({
+        userName: this.ruleForm2.userName,
+        pass: this.ruleForm2.pass
       })
+        .then(function(response) {
+          console.log(response.data)
+          console.log('登陆成功')
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
     },
     resetForm(formName) {
       this.$refs[formName].resetFields()

@@ -6,10 +6,14 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
 import router from './router'
+
+// vadal
 import Vodal from 'vodal'
 
 // normalize
 import 'normalize.css'
+
+// vadal
 import 'vodal/common.css'
 import 'vodal/door.css'
 

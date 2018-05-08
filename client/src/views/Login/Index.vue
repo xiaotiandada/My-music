@@ -54,7 +54,7 @@ export default {
     }
   },
   methods: {
-    async submitForm(formName) {
+    submitForm(formName) {
       // this.$refs[formName].validate((valid) => {
       //   if (valid) {
       //     console.log(valid)
@@ -67,7 +67,7 @@ export default {
       // })
       // console.log('login' + this.ruleForm2.userName)
       // console.log('login' + this.ruleForm2.pass)
-      await AuthenticationService.userLogin({
+      AuthenticationService.userLogin({
         userName: this.ruleForm2.userName,
         pass: this.ruleForm2.pass
       }).then(function(response) {

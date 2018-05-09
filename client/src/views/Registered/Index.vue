@@ -22,6 +22,8 @@
 </template>
 
 <script>
+import AuthenticationService from '@/services/AuthenticationService'
+
 export default {
   data() {
     const validateUserName = (rule, value, callback) => {
@@ -73,7 +75,16 @@ export default {
     submitForm(formName) {
       this.$refs[formName].validate((valid) => {
         if (valid) {
-          alert('submit!')
+          AuthenticationService.userRegister({
+            userName: this.ruleForm2.userName,
+            pass: this.ruleForm2.pass
+          })
+            .then(function(response) {
+              console.log(response.data)
+            })
+            .catch(function(err) {
+              console.log(err)
+            })
         } else {
           console.log('error submit!!')
           return false

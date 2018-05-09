@@ -5,6 +5,9 @@ import Vue from 'vue'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import App from './App'
+import { sync } from 'vuex-router-sync'
+// store
+import store from '@/store/store'
 import router from './router'
 
 // vadal
@@ -21,10 +24,13 @@ Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.component(Vodal.name, Vodal)
 
+sync(store, router)
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

@@ -9,8 +9,8 @@
       <login></login>      
     </vodal>
 
-     <vodal :show="isShowr" :height="400" animation="door" @hide="clickHideShowReg">
-      <registered></registered>      
+    <vodal :show="isShowr" :height="400" animation="door" @hide="clickHideShowReg">
+      <registered></registered>
     </vodal>
   </div>
 </template>

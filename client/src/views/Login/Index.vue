@@ -54,28 +54,47 @@ export default {
     }
   },
   methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          AuthenticationService.userLogin({
-            userName: this.ruleForm2.userName,
-            pass: this.ruleForm2.pass
-          }).then(function(response) {
-            console.log(response.data)
-            if (response.data.success) {
-              console.log(response.data.message)
-            } else {
-              console.log(response.data.message)
-            }
-          })
-            .catch(function(error) {
-              console.log(error)
-            })
+    async submitForm(formName) {
+      try {
+        const response = await AuthenticationService.userLogin({
+          userName: this.ruleForm2.userName,
+          pass: this.ruleForm2.pass
+        })
+        console.log(response.data)
+        this.$store.dispatch('userLoggin', response.data.success)
+
+        if (response.data.success) {
+          console.log(response.data.message)
         } else {
-          console.log('error submit!!')
+          console.log(response.data.message)
           return false
         }
-      })
+      } catch (error) {
+        console.log(error)
+      }
+
+      // this.$refs[formName].validate((valid) => {
+      //   if (valid) {
+      //     AuthenticationService.userLogin({
+      //       userName: this.ruleForm2.userName,
+      //       pass: this.ruleForm2.pass
+      //     }).then(function(response) {
+      //       console.log(response.data)
+      //       this.$store.dispatch('userLoggin', response.data.success)
+      //       if (response.data.success) {
+      //         console.log(response.data.message)
+      //       } else {
+      //         console.log(response.data.message)
+      //       }
+      //     })
+      //       .catch(function(error) {
+      //         console.log(error)
+      //       })
+      //   } else {
+      //     console.log('error submit!!')
+      //     return false
+      //   }
+      // })
     },
     resetForm(formName) {
       this.$refs[formName].resetFields()

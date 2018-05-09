@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 // morgan
 const morgan = require('morgan') // 命令行log显示
-const User = require('./model/user')
 
 const bodyParser = require('body-parser')
 const cors = require('cors')

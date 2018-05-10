@@ -1,5 +1,13 @@
 const User = require('../model/User')
+const jwt = require('jsonwebtoken')
 const config = require('../config/config')
+
+function jwtSignUser(user){
+  const ONE_WEEK = 60 * 60 * 24 * 7
+  return jwt.sign(user, config.authentication.jwtSecret,{
+    expiresIn: ONE_WEEK
+  })
+}
 
 module.exports = {
   async userLogin (req, res) {
@@ -17,10 +25,23 @@ module.exports = {
           })
         } else if(user){
           if(user.password === req.body.pass ){
+            
+            user.token = jwtSignUser({ userName: req.body.userName })
+            user.save( function(err){
+              if(err){
+                res.send({
+                  success: false,
+                  message: '认证错误'
+                })
+              }
+            })
+
+
             res.send({
               success: true,
               message: '登陆成功',
-              userName: user.userName
+              userName: user.userName,
+              token: jwtSignUser({ userName: req.body.userName })
             })
           }else{
             res.send({
@@ -45,6 +66,9 @@ module.exports = {
 
   async userRegister (req, res){
     try {
+      // const user = await User.create(req.body)
+      // const userJson = req.body.userName
+      
       User.findOne({
         userName: req.body.userName
       }, (err, user) => {
@@ -68,7 +92,8 @@ module.exports = {
         } else {
           let newUser = new User({
             userName: req.body.userName,
-            password: req.body.pass
+            password: req.body.pass,
+            token: jwtSignUser({ userName: req.body.userName })            
           })
   
           newUser.save( (err) => {
@@ -80,7 +105,8 @@ module.exports = {
             }
             res.send({
               success: true,
-              message: '注册成功'
+              message: '注册成功',
+              token: jwtSignUser({ userName: req.body.userName })
             })
           })
         }

@@ -24,43 +24,72 @@
       </ul>
     </div>
     <div class="login_area" v-if="!isUserLoggedIn">
-      <a href="#"
-        @click="logClick"
-        class="login_btn">登录</a>
-      <a href="#"
-      @click="logClickReg"
-       class="regin_btn">注册</a>
+      <a href="#" @click="logClick" class="login_btn">登录</a>
+      <a href="#" @click="logClickReg" class="regin_btn">注册</a>
     </div>
-
-    <div class="login_area" v-if="isUserLoggedIn">
-      <el-button type="primary">登陆成功</el-button>
+  
+    <div class="login_user" v-if="isUserLoggedIn">
+      <!-- <el-button type="primary">登陆成功</el-button>
+           -->
+  
+      <el-dropdown>
+        <span class="el-dropdown-link">
+            <div class="user-img">
+              <img src="https://avatars2.githubusercontent.com/u/24250627?s=460&v=4" alt="">
+              <i class="el-icon-arrow-down el-icon--right"></i>
+            </div>
+        
+      </span>
+        <el-dropdown-menu slot="dropdown">
+          <el-dropdown-item>个人主页</el-dropdown-item>
+          <el-dropdown-item>退出登陆</el-dropdown-item>
+        </el-dropdown-menu>
+      </el-dropdown>
     </div>
-
+  
   </header>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-export default {
-  computed: {
-    ...mapState([
-      'isUserLoggedIn'
-    ])
-  },
-  data() {
-    return {
-    }
-  },
-  methods: {
-    logClick: function() {
-      this.$emit('clickToolShow', true)
+  import {
+    mapState
+  } from 'vuex'
+  export default {
+    computed: {
+      ...mapState([
+        'isUserLoggedIn'
+      ])
     },
-    logClickReg: function() {
-      this.$emit('clickToolShowReg', true)
+    data() {
+      return {}
+    },
+    methods: {
+      logClick: function() {
+        this.$emit('clickToolShow', true)
+      },
+      logClickReg: function() {
+        this.$emit('clickToolShowReg', true)
+      }
     }
   }
-}
 </script>
 
 <style>
+.login_user{
+  float: left;
+  margin: 10px 0 0 80px;
+}
+.user-img{
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.user-img img{
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+}
+  
 </style>

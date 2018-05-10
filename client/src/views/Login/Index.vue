@@ -61,7 +61,10 @@ export default {
           pass: this.ruleForm2.pass
         })
         console.log(response.data)
-        this.$store.dispatch('userLoggin', response.data.success)
+        this.$store.dispatch('userLoggin', response.data.token)
+        if (response.data.success) {
+          this.$emit('clickHideShow', false)
+        }
 
         if (response.data.success) {
           console.log(response.data.message)

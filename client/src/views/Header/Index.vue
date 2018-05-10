@@ -23,7 +23,7 @@
         <li><a href="#" target="_blank">会员中心</a></li>
       </ul>
     </div>
-    <div class="login_area" v-if="!isLoginShow">
+    <div class="login_area" v-if="!isUserLoggedIn">
       <a href="#"
         @click="logClick"
         class="login_btn">登录</a>
@@ -42,40 +42,22 @@
 <script>
 import { mapState } from 'vuex'
 export default {
+  computed: {
+    ...mapState([
+      'isUserLoggedIn'
+    ])
+  },
   data() {
     return {
-      options: [{
-        value: '选项1',
-        label: '黄金糕'
-      }, {
-        value: '选项2',
-        label: '双皮奶'
-      }, {
-        value: '选项3',
-        label: '蚵仔煎'
-      }, {
-        value: '选项4',
-        label: '龙须面'
-      }, {
-        value: '选项5',
-        label: '北京烤鸭'
-      }],
-      value: ''
     }
   },
   methods: {
     logClick: function() {
       this.$emit('clickToolShow', true)
-      this.isLoginShow = true
     },
     logClickReg: function() {
       this.$emit('clickToolShowReg', true)
     }
-  },
-  computed: {
-    ...mapState([
-      'isUserLoggedIn'
-    ])
   }
 }
 </script>

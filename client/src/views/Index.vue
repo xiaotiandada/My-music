@@ -6,11 +6,11 @@
     <v-content></v-content>
     <v-footer :listLink="listLink"></v-footer>
     <vodal :show="isShow" animation="door" @hide="clickHideShow">
-      <login></login>      
+      <login @clickHideShow="clickHideShow"></login>      
     </vodal>
 
     <vodal :show="isShowr" :height="400" animation="door" @hide="clickHideShowReg">
-      <registered></registered>
+      <registered @clickHideShowReg="clickHideShowReg"></registered>
     </vodal>
   </div>
 </template>

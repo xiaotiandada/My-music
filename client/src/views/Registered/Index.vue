@@ -72,24 +72,41 @@ export default {
     }
   },
   methods: {
-    submitForm(formName) {
-      this.$refs[formName].validate((valid) => {
-        if (valid) {
-          AuthenticationService.userRegister({
-            userName: this.ruleForm2.userName,
-            pass: this.ruleForm2.pass
-          })
-            .then(function(response) {
-              console.log(response.data)
-            })
-            .catch(function(err) {
-              console.log(err)
-            })
-        } else {
-          console.log('error submit!!')
-          return false
+    async submitForm(formName) {
+      try {
+        const response = await AuthenticationService.userRegister({
+          userName: this.ruleForm2.userName,
+          pass: this.ruleForm2.pass
+        })
+
+        console.log(response.data)
+        if (response.data.success) {
+          this.$emit('clickHideShowReg', false)
         }
-      })
+      } catch (error) {
+        console.log(error)
+      }
+
+      // this.$refs[formName].validate((valid) => {
+      //   if (valid) {
+      //     AuthenticationService.userRegister({
+      //       userName: this.ruleForm2.userName,
+      //       pass: this.ruleForm2.pass
+      //     })
+      //       .then(function(response) {
+      //         console.log(response.data)
+      //         if (response.data.success) {
+      //           this.$emit('clickHideShowReg', false)
+      //         }
+      //       })
+      //       .catch(function(err) {
+      //         console.log(err)
+      //       })
+      //   } else {
+      //     console.log('error submit!!')
+      //     return false
+      //   }
+      // })
     },
     resetForm(formName) {
       this.$refs[formName].resetFields()

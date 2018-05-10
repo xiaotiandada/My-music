@@ -5,11 +5,11 @@
     <v-slider :sliderImg="sliderImg"></v-slider>
     <v-content></v-content>
     <v-footer :listLink="listLink"></v-footer>
-    <vodal :show="isShow" animation="door" @hide="clickHideShow">
+    <vodal :show="isShow" animation="door" @hide="clickHideShow(false)">
       <login @clickHideShow="clickHideShow"></login>      
     </vodal>
 
-    <vodal :show="isShowr" :height="400" animation="door" @hide="clickHideShowReg">
+    <vodal :show="isShowr" :height="400" animation="door" @hide="clickHideShowReg(false)">
       <registered @clickHideShowReg="clickHideShowReg"></registered>
     </vodal>
   </div>
@@ -90,14 +90,14 @@
       clickToolShow(status) {
         this.isShow = status
       },
-      clickHideShow() {
-        this.isShow = false
+      clickHideShow(status) {
+        this.isShow = status
       },
-      clickToolShowReg() {
-        this.isShowr = true
+      clickToolShowReg(status) {
+        this.isShowr = status
       },
-      clickHideShowReg() {
-        this.isShowr = false
+      clickHideShowReg(status) {
+        this.isShowr = status
       }
     }
   }

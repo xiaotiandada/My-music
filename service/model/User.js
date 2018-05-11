@@ -1,6 +1,7 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt =require('bcryptjs')
+let SALT_WORK_FACTOR = 10
 mongoose.connect('mongodb://localhost/mymusic')
 
 
@@ -23,9 +24,39 @@ var UserSchema = new Schema({
   }
 })
 
-UserSchema.pre('save', function(next){
-  
+UserSchema.pre('save', function preSaveCallback (next){
+  let _this = this
+  if(!_this.isModified('password')){
+      return next()
+  }
+
+  bcrypt.genSalt(SALT_WORK_FACTOR, function preSaveCallback (err, salt){
+    if(err){
+      return next(err)
+    }
+    bcrypt.hash(_this.password, salt, function hashCassback (err, hash) {
+      if(err){
+        return next(err)
+      }
+      _this.password = hash
+      next()
+    })
+  })
+
+
 })
+
+UserSchema.methods.comparePassword = function comparePassword(candidatePassword, cb) {
+  bcrypt.compare(candidatePassword, this.password, function compareCallback(err, isMatch) {
+    if (err) {
+      return cb(err);
+    }
+
+    cb(null, isMatch);
+  });
+};
+
+
 
 module.exports = mongoose.model('User', UserSchema)
 

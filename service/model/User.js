@@ -1,6 +1,9 @@
 const mongoose = require('mongoose')
-mongoose.connect('mongodb://localhost/mymusic')
 const Schema = mongoose.Schema
+const bcrypt =require('bcryptjs')
+mongoose.connect('mongodb://localhost/mymusic')
+
+
 var UserSchema = new Schema({
   userName: {
     type: String,
@@ -18,6 +21,10 @@ var UserSchema = new Schema({
   token: {
     type: String
   }
+})
+
+UserSchema.pre('save', function(next){
+  
 })
 
 module.exports = mongoose.model('User', UserSchema)

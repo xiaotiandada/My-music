@@ -2,6 +2,8 @@ const User = require('../model/User')
 const jwt = require('jsonwebtoken')
 const config = require('../config/config')
 
+
+// token
 function jwtSignUser(user) {
   const ONE_WEEK = 60 * 60 * 24 * 7
   return jwt.sign(user, config.authentication.jwtSecret, {
@@ -24,6 +26,7 @@ module.exports = {
             message: '用户不存在'
           })
         } else if (user) {
+          // 通过bcrypt 对再次传入的密码和数据库中保存的加密后的密码进行比较，如果匹配，则登录成功 isMatch 为布尔值
           user.comparePassword(req.body.pass, (err, isMatch) => {
             if (isMatch && !err) {
               user.token = jwtSignUser({
@@ -73,9 +76,6 @@ module.exports = {
 
   async userRegister(req, res) {
     try {
-      // const user = await User.create(req.body)
-      // const userJson = req.body.userName
-
       User.findOne({
         userName: req.body.userName
       }, (err, user) => {

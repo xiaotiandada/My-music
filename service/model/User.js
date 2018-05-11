@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema
-const bcrypt =require('bcryptjs')
+const bcrypt =require('bcryptjs')  // 密码加密
 let SALT_WORK_FACTOR = 10
 mongoose.connect('mongodb://localhost/mymusic')
 
@@ -24,20 +24,27 @@ var UserSchema = new Schema({
   }
 })
 
-UserSchema.pre('save', function preSaveCallback (next){
+// 在保存密码之前用bcrypt加密保证密码只有用户知道
+UserSchema.pre('save', function (next){
+  // 保存this指向
   let _this = this
+  // 判断是否为最新
   if(!_this.isModified('password')){
       return next()
   }
-
-  bcrypt.genSalt(SALT_WORK_FACTOR, function preSaveCallback (err, salt){
+  // 加密EMMM 产生一个salt
+  bcrypt.genSalt(SALT_WORK_FACTOR, function (err, salt){
     if(err){
       return next(err)
     }
-    bcrypt.hash(_this.password, salt, function hashCassback (err, hash) {
+
+    // 结合salt 生成 hash
+    bcrypt.hash(_this.password, salt, function (err, hash) {
       if(err){
         return next(err)
       }
+
+      // 用hash覆盖明文密码
       _this.password = hash
       next()
     })
@@ -46,8 +53,10 @@ UserSchema.pre('save', function preSaveCallback (next){
 
 })
 
-UserSchema.methods.comparePassword = function comparePassword(candidatePassword, cb) {
-  bcrypt.compare(candidatePassword, this.password, function compareCallback(err, isMatch) {
+// 通过bcrypt的compare方法，对再次传入的密码和数据库中保存的加密后的密码进行比较，如果匹配，则登录成功 isMatch 为布尔值
+// mongoose 模型扩展 在 methods 对象上扩展
+UserSchema.methods.comparePassword = function (candidatePassword, cb) {
+  bcrypt.compare(candidatePassword, this.password, function (err, isMatch) {
     if (err) {
       return cb(err);
     }

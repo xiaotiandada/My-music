@@ -69,6 +69,9 @@
       },
       logClickReg: function() {
         this.$emit('clickToolShowReg', true)
+      },
+      outLog: function() {
+  
       }
     }
   }

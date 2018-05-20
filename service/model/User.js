@@ -2,7 +2,8 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 const bcrypt =require('bcryptjs')  // 密码加密
 let SALT_WORK_FACTOR = 10
-mongoose.connect('mongodb://localhost/mymusic')
+const config = require('../config/config')
+mongoose.connect(config.database)
 
 
 var UserSchema = new Schema({

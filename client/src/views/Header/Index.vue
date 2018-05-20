@@ -31,18 +31,21 @@
     <div class="login_user" v-if="isUserLoggedIn">
       <!-- <el-button type="primary">登陆成功</el-button>
            -->
-  
       <el-dropdown>
         <span class="el-dropdown-link">
-            <div class="user-img">
-              <img src="https://avatars2.githubusercontent.com/u/24250627?s=460&v=4" alt="">
-              <i class="el-icon-arrow-down el-icon--right"></i>
-            </div>
-        
-      </span>
+          <div class="user-img">
+            <img src="https://avatars2.githubusercontent.com/u/24250627?s=460&v=4" alt="">
+            <i class="el-icon-arrow-down el-icon--right"></i>
+          </div>
+        </span>
         <el-dropdown-menu slot="dropdown">
           <el-dropdown-item>个人主页</el-dropdown-item>
-          <el-dropdown-item>退出登陆</el-dropdown-item>
+          <a href="" @click="logout">
+            <el-dropdown-item>
+              退出登陆
+            </el-dropdown-item>
+          </a>
+          
         </el-dropdown-menu>
       </el-dropdown>
     </div>
@@ -70,8 +73,9 @@
       logClickReg: function() {
         this.$emit('clickToolShowReg', true)
       },
-      outLog: function() {
-  
+      logout: function() {
+        this.$store.dispatch('setToken', null)
+        this.$store.dispatch('setUser', null)
       }
     }
   }

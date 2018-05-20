@@ -62,7 +62,7 @@ export default {
           pass: this.ruleForm2.pass
         })
         console.log(response.data)
-        this.$store.dispatch('userLoggin', response.data.token)
+        this.$store.dispatch('setToken', response.data.token)
         if (response.data.success) {
           this.$emit('clickHideShow', false)
         }
@@ -84,7 +84,7 @@ export default {
       //       pass: this.ruleForm2.pass
       //     }).then(function(response) {
       //       console.log(response.data)
-      //       this.$store.dispatch('userLoggin', response.data.success)
+      //       this.$store.dispatch('setToken', response.data.success)
       //       if (response.data.success) {
       //         console.log(response.data.message)
       //       } else {
@@ -134,21 +134,22 @@ export default {
     width: 78%;
   }
   .logInput{
-    border: 1px solid #e6e6e6;
-    background: transparent;
-    border-radius: 3px;
-    color: #454545;
     line-height: 38px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    color: #454545;
   }
   .el-input__inner{
     border: none;
+    background: transparent;
   }
 
   .el-form{
     position: absolute;
     left: 0;
     right: 0;
-    width: 520px;
+    width: 360px;
     padding: 35px 35px 15px 35px;
     margin: 120px auto;
   }

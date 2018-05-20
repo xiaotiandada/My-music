@@ -61,7 +61,7 @@ export default {
           pass: this.ruleForm2.pass
         })
         console.log(response.data)
-        this.$store.dispatch('userLoggin', response.data.token)
+        this.$store.dispatch('setToken', response.data.token)
         if (response.data.success) {
           this.$emit('clickHideShow', false)
         }
@@ -83,7 +83,7 @@ export default {
       //       pass: this.ruleForm2.pass
       //     }).then(function(response) {
       //       console.log(response.data)
-      //       this.$store.dispatch('userLoggin', response.data.success)
+      //       this.$store.dispatch('setToken', response.data.success)
       //       if (response.data.success) {
       //         console.log(response.data.message)
       //       } else {

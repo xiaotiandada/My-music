@@ -62,6 +62,7 @@ export default {
         })
         console.log(response.data)
         this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setUser', response.data.userName)
         if (response.data.success) {
           this.$emit('clickHideShow', false)
         }

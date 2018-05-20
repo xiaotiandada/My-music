@@ -1,0 +1,30 @@
+{
+  "name": "my-music",
+  "version": "1.0.0",
+  "description": "> A Vue.js project",
+  "main": "index.js",
+  "dependencies": {
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.1.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "commit": "git-cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaotiandada/My-music.git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "node_modules/cz-conventional-changelog"
+    }
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xiaotiandada/My-music/issues"
+  },
+  "homepage": "https://github.com/xiaotiandada/My-music#readme"
+}

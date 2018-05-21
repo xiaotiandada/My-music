@@ -6,5 +6,11 @@ export default {
   },
   userRegister(credentials) {
     return Api().post('/userRegister', credentials)
+  },
+  adminLogin(credentials) {
+    return Api().post('/adminLogin', credentials)
+  },
+  adminRegister(credentials) {
+    return Api().post('/adminRegister', credentials)
   }
 }

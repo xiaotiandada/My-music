@@ -11,7 +11,7 @@
         <el-input type="password" v-model="ruleForm2.pass" auto-complete="off" placeholder="password" ></el-input>
       </el-form-item>
       <el-form-item label-width="0px">
-        <el-button class="logButton" type="primary" @click="submitForm('ruleForm2')">登陆</el-button>
+        <el-button class="logButton" type="primary" @click="adminLogin('ruleForm2')">登陆</el-button>
         <!-- <el-button @click="resetForm('ruleForm2')">重置</el-button> -->
       </el-form-item>
     </el-form>
@@ -55,20 +55,24 @@ export default {
     }
   },
   methods: {
-    async submitForm(formName) {
+    async adminLogin(formName) {
       try {
-        const response = await AuthenticationService.userLogin({
+        const response = await AuthenticationService.adminLogin({
           userName: this.ruleForm2.userName,
           pass: this.ruleForm2.pass
         })
         console.log(response.data)
-        this.$store.dispatch('setToken', response.data.token)
+        this.$store.dispatch('setadminToken', response.data.token)
+        this.$store.dispatch('setadminUser', response.data.userName)
         if (response.data.success) {
           this.$emit('clickHideShow', false)
         }
 
         if (response.data.success) {
           console.log(response.data.message)
+          this.$router.push({
+            name: 'Admin'
+          })
         } else {
           console.log(response.data.message)
           return false
@@ -143,6 +147,7 @@ export default {
   .el-input__inner{
     border: none;
     background: transparent;
+    color: #fff;
   }
 
   .el-form{

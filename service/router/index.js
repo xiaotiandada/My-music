@@ -8,4 +8,8 @@ module.exports = (app) => {
   app.post('/userLogin', AuthenticationController.userLogin )
 
   app.post('/userRegister', AuthenticationController.userRegister)
+
+  app.post('/adminLogin', AuthenticationController.adminLogin)
+
+  app.post('/adminRegister', AuthenticationController.adminRegister)
 }

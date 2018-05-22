@@ -3,9 +3,6 @@
   transition: margin-left 0.28s;
   margin-left: 180px;
 }
-#app .admin-main h2 {
-  margin: 0;
-}
 #app .admin-sidebar {
   transition: width .28s;
   width: 180px !important;

@@ -154,7 +154,7 @@ export default {
     position: absolute;
     left: 0;
     right: 0;
-    width: 360px;
+    width: 450px;
     padding: 35px 35px 15px 35px;
     margin: 120px auto;
   }

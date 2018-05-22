@@ -2,16 +2,21 @@
   <div class="admin-layout">
     <sidebar class="admin-sidebar"></sidebar>
     <div class="admin-main">
-      <h2>main</h2>
+      <navbar></navbar>  
+      <app-main></app-main>
     </div>
   </div>
 </template>
 
 <script>
   import Sidebar from './Sidebar/Index'
+  import Navbar from '@/views/admin/layout/components/Navbar.vue'
+  import AppMain from '@/views/admin/layout/components/AppMain.vue'
   export default {
     components: {
-      Sidebar
+      Sidebar,
+      Navbar,
+      AppMain
     }
   }
 </script>

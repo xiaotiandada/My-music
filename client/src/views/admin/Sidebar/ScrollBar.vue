@@ -19,14 +19,11 @@ export default {
     handleScroll(e) {
       // 鼠标滚动 -120 下 120 上
       const eventDelta = e.wheelDelta || -e.daltaY * 3
-      console.log(eventDelta)
-
+      // console.log(eventDelta)
       const $container = this.$refs.scrollContainer
       const $containerHeight = $container.offsetHeight
-
-      const $wrapper = this.refs.scrollWrapper
+      const $wrapper = this.$refs.scrollWrapper
       const $wrapperHeight = $wrapper.offsetHeight
-
       if (eventDelta > 0) {
         this.top = Math.min(0, this.top + eventDelta)
       } else {

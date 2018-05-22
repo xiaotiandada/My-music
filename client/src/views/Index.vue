@@ -104,6 +104,5 @@
 </script>
 
 <style lang="less">
-  @import '../public/css/base.less';
 
 </style>

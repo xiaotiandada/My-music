@@ -16,7 +16,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.3.6",
-    "less": "^3.0.2",
+    "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "normalize.css": "^8.0.0",
     "vodal": "^2.3.3",

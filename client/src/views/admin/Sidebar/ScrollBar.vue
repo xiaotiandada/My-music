@@ -7,6 +7,7 @@
 </template>
 
 <script>
+const delta = 15
 export default {
   name: 'scrollBar',
   data() {
@@ -19,6 +20,26 @@ export default {
       // 鼠标滚动 -120 下 120 上
       const eventDelta = e.wheelDelta || -e.daltaY * 3
       console.log(eventDelta)
+
+      const $container = this.$refs.scrollContainer
+      const $containerHeight = $container.offsetHeight
+
+      const $wrapper = this.refs.scrollWrapper
+      const $wrapperHeight = $wrapper.offsetHeight
+
+      if (eventDelta > 0) {
+        this.top = Math.min(0, this.top + eventDelta)
+      } else {
+        if ($containerHeight - delta < $wrapperHeight) {
+          if (this.top < -($wrapperHeight - $containerHeight + delta)) {
+            this.top = this.top
+          } else {
+            this.top = Math.max(this.top + eventDelta, $containerHeight - $wrapperHeight - delta)
+          }
+        } else {
+          this.top = 0
+        }
+      }
     }
   }
 }

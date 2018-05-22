@@ -1,7 +1,7 @@
 <template>
   <scroll-bar>
-    <el-menu mode="vertical" unique-opened class="el-menu-vertical-demo" @open="handleOpen" @close="handleClose" background-color="#304156" text-color="#fff" active-text-color="#409EFF">
-      <sidebar-item></sidebar-item>
+    <el-menu mode="vertical" unique-opened class="el-menu-vertical-demo" background-color="#304156" text-color="#fff" active-text-color="#409EFF">
+      <sidebar-item :routes="routes"></sidebar-item>
     </el-menu>
   </scroll-bar>
 </template>
@@ -14,13 +14,13 @@
       SidebarItem,
       ScrollBar
     },
-    methods: {
-      handleOpen(key, keyPath) {
-        console.log(key, keyPath)
-      },
-      handleClose(key, keyPath) {
-        console.log(key, keyPath)
+    computed: {
+      routes() {
+        console.log(this.$router.options.routes)
+        return this.$router.options.routes
       }
+    },
+    methods: {
     }
   }
 </script>

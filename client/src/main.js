@@ -20,6 +20,9 @@ import 'normalize.css'
 import 'vodal/common.css'
 import 'vodal/door.css'
 
+// global
+import '@/public/css/index.less'
+
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.component(Vodal.name, Vodal)

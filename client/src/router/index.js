@@ -51,7 +51,7 @@ export default new Router({
         {
           path: 'index',
           name: 'Form',
-          component: () => import('@/views/admin/Sidebar/from/Index'),
+          component: () => import('@/views/admin/from/Index'),
           meta: { title: '表单', icon: 'form' }
         }
       ]

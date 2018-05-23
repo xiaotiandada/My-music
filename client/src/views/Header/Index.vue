@@ -29,25 +29,23 @@
     </div>
   
     <div class="login_user" v-if="isUserLoggedIn">
-      <!-- <el-button type="primary">登陆成功</el-button>
-           -->
-      <el-dropdown>
-        <span class="el-dropdown-link">
-          <div class="user-img">
-            <img src="https://avatars2.githubusercontent.com/u/24250627?s=460&v=4" alt="">
-            <i class="el-icon-arrow-down el-icon--right"></i>
-          </div>
-        </span>
-        <el-dropdown-menu slot="dropdown">
-          <el-dropdown-item>个人主页</el-dropdown-item>
-          <a href="" @click="logout">
-            <el-dropdown-item>
-              退出登陆
-            </el-dropdown-item>
-          </a>
-          
-        </el-dropdown-menu>
-      </el-dropdown>
+        <el-menu mode="horizontal" class="user-menu">
+          <el-dropdown trigger="click">
+              <div class="user-img">
+                <img src="https://avatars2.githubusercontent.com/u/24250627?s=460&v=4" alt="">
+                <i class="el-icon-arrow-down el-icon--right"></i>
+              </div>
+            <el-dropdown-menu slot="dropdown">
+              <el-dropdown-item>个人主页</el-dropdown-item>
+              <a href="" @click="logout">
+                <el-dropdown-item>
+                  退出登陆
+                </el-dropdown-item>
+              </a>
+              
+            </el-dropdown-menu>
+          </el-dropdown>
+        </el-menu>
     </div>
   
   </header>
@@ -81,15 +79,15 @@
   }
 </script>
 
-<style>
+<style lang="less">
 .login_user{
   float: left;
-  margin: 10px 0 0 80px;
+  margin: 16px 0 0 80px;
 }
 .user-img{
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  border-radius: 10px;
   overflow: hidden;
 }
 
@@ -98,5 +96,7 @@
   height: 100%;
   background-size: cover;
 }
-  
+.user-menu{
+  border: 0;
+}
 </style>

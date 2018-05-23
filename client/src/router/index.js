@@ -37,7 +37,13 @@ export default new Router({
     {
       path: '/admin',
       name: 'Admin',
-      component: Admin
+      // redirect: '/admin',
+      component: Admin,
+      hidden: true,
+      children: [{
+        path: 'admin',
+        component: () => import('@/views/admin/Dashboard/Index')
+      }]
     },
     {
       path: '/AdminLogin',
@@ -52,7 +58,7 @@ export default new Router({
           path: 'index',
           name: 'Form',
           component: () => import('@/views/admin/from/Index'),
-          meta: { title: '表单', icon: 'form' }
+          meta: { title: '用户管理', icon: 'form' }
         }
       ]
     }

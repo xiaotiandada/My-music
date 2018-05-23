@@ -50,6 +50,9 @@
   </script>
 
 <style lang="less">
+.app-container{
+  padding: 20px;
+}
 .el-table th>.cell{
   text-align: center;
 }

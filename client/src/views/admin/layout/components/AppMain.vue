@@ -13,5 +13,7 @@ export default {
 </script>
 
 <style>
-
+.app-main{
+  min-height: 100%;
+}
 </style>

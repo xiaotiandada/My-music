@@ -43,7 +43,7 @@ export default new Router({
           path: 'index',
           name: 'Dashboard',
           component: () => import('@/views/admin/Dashboard/Index'),
-          meta: { title: '首页', icon: 'form' }
+          meta: { title: '后台首页', icon: 'example' }
         }
       ]
     },
@@ -61,7 +61,7 @@ export default new Router({
           path: 'index',
           name: 'Form',
           component: () => import('@/views/admin/from/Index'),
-          meta: { title: '用户管理', icon: 'form' }
+          meta: { title: '用户管理', icon: 'table' }
         }
       ]
     }

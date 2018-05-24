@@ -3,7 +3,7 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel">
         <div class="card-panel-icon-wrapper icon-people">
-          <i class="el-icon-star-on"></i>
+          <svg-icon icon-class="peoples" class-name="card-panel-icon"></svg-icon>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">今日活跃</div>
@@ -14,7 +14,7 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel">
         <div class="card-panel-icon-wrapper icon-message">
-          <i class="el-icon-star-on"></i>
+          <svg-icon icon-class="email" class-name="card-panel-icon"></svg-icon>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">今日活跃</div>
@@ -25,7 +25,7 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel">
         <div class="card-panel-icon-wrapper icon-money">
-          <i class="el-icon-star-on"></i>
+          <svg-icon icon-class="money" class-name="card-panel-icon"></svg-icon>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">今日活跃</div>
@@ -36,7 +36,7 @@
     <el-col :xs="12" :sm="12" :lg="6" class="card-panel-col">
       <div class="card-panel">
         <div class="card-panel-icon-wrapper icon-shoppingCard">
-          <i class="el-icon-star-on"></i>
+          <svg-icon icon-class="shoppingCard" class-name="card-panel-icon"></svg-icon>
         </div>
         <div class="card-panel-description">
           <div class="card-panel-text">今日活跃</div>
@@ -87,24 +87,25 @@
         background: #34bfa3
       }
     }
+    .icon-people {
+      color: #40c9c6;
+    }
+    .icon-message {
+      color: #36a3f7;
+    }
+    .icon-money {
+      color: #f4516c;
+    }
+    .icon-shoppingCard {
+      color: #34bfa3
+    }
     .card-panel-icon-wrapper{
       float: left;
       margin: 14px 0 0 14px;
       padding: 16px;
       transition: all .38s ease-out;
       border-radius: 6px;
-      i{
-        float: left;
-        font-size: 48px;
-
-        width: 1em;
-        height: 1em;
-        vertical-align: -.15em;
-        fill: currentColor;
-        overflow: hidden;
-      }
     }
-    // 未用到
     .card-panel-icon{
       float: left;
       font-size: 48px;

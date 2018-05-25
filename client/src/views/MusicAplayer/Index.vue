@@ -1,6 +1,8 @@
 <template>
-  <div class="music-aplayer">
-    <aplayer autoplay float :showLrc="true" :music="musicPlayer" :list="musicList" />
+  <div class="music-container">
+    <div class="music-aplayer">
+      <aplayer :showLrc="true" :music="musicPlayer" :list="musicList" />
+    </div>
   </div>
 </template>
 
@@ -51,13 +53,21 @@
       musicPlayer() {
         return this.musicList[this.musicIndex]
       }
+    },
+    created() {
+      document.body.style.backgroundImage = 'url(https://moeplayer.b0.upaiyun.com/aplayer/secretbase.jpg)'
     }
   }
 </script>
 
 <style>
+.music-container{
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
   .music-aplayer {
     width: 50%;
-    margin: 200px auto;
+    margin: 120px auto 0;
   }
 </style>

@@ -1,8 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
+// const _import = require('./_import_' + process.env.NODE_ENV)
 import Index from '@/views/Index'
-import Registered from '@/views/Registered/Index'
+
 import AdminLogin from '@/views/admin/Login/Index'
+import MusicAplayer from '@/views/MusicAplayer/Index'
 
 Vue.use(Router)
 
@@ -21,49 +23,54 @@ import Admin from '@/views/admin/Index'
   }
 **/
 
-export default new Router({
-  routes: [
-    {
-      path: '/',
-      name: 'Index',
-      component: Index
-    },
-    {
-      path: '/registered',
-      name: 'Registered',
-      component: Registered
-    },
-    {
-      path: '/admin',
-      component: Admin,
-      redirect: '/admin/index',
-      hidden: false,
-      children: [
-        {
-          path: 'index',
-          name: 'Dashboard',
-          component: () => import('@/views/admin/Dashboard/Index'),
-          meta: { title: '后台首页', icon: 'example' }
-        }
-      ]
-    },
-    {
-      path: '/AdminLogin',
-      name: 'AdminLogin',
-      component: AdminLogin
-    },
-    {
-      path: '/form',
-      component: Admin,
-      hidden: false,
-      children: [
-        {
-          path: 'index',
-          name: 'Form',
-          component: () => import('@/views/admin/from/Index'),
-          meta: { title: '用户管理', icon: 'table' }
-        }
-      ]
+export const constantRouterMap = [{
+  path: '/',
+  name: 'Index',
+  component: Index
+},
+{
+  path: '/adminglogin',
+  name: 'AdminLogin',
+  component: AdminLogin
+},
+{
+  path: '/musicaplayer',
+  name: 'MusicAplayer',
+  component: MusicAplayer
+},
+{
+  path: '/admin',
+  component: Admin,
+  redirect: '/admin/index',
+  hidden: false,
+  children: [{
+    path: 'index',
+    name: 'Dashboard',
+    component: () =>
+        import('@/views/admin/Dashboard/Index'),
+    meta: {
+      title: '后台首页',
+      icon: 'example'
     }
-  ]
+  }]
+},
+{
+  path: '/form',
+  component: Admin,
+  hidden: false,
+  children: [{
+    path: 'index',
+    name: 'Form',
+    component: () =>
+        import('@/views/admin/from/Index'),
+    meta: {
+      title: '用户管理',
+      icon: 'table'
+    }
+  }]
+}
+]
+
+export default new Router({
+  routes: constantRouterMap
 })

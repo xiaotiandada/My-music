@@ -21,6 +21,7 @@
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
 export default {
+  name: 'AdminLogin',
   data() {
     const validateUserName = (rule, value, callback) => {
       if (value === '') {
@@ -64,15 +65,17 @@ export default {
         console.log(response.data)
         this.$store.dispatch('setadminToken', response.data.token)
         this.$store.dispatch('setadminUser', response.data.userName)
-        if (response.data.success) {
-          this.$emit('clickHideShow', false)
-        }
+          .then(() => {
+            this.$router.push({ path: '/admin' })
+          })
+          .catch((error) => {
+            console.log(error)
+            return false
+          })
 
         if (response.data.success) {
+          this.$emit('clickHideShow', false)
           console.log(response.data.message)
-          this.$router.push({
-            name: 'Admin'
-          })
         } else {
           console.log(response.data.message)
           return false

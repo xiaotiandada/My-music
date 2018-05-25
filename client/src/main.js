@@ -1,27 +1,25 @@
 // The Vue build version to load with the `import` command
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
-// element ui
-import ElementUI from 'element-ui'
+
+import ElementUI from 'element-ui' // element ui
 import 'element-ui/lib/theme-chalk/index.css'
+
 import App from './App'
+
 import { sync } from 'vuex-router-sync'
-// store
-import store from '@/store/store'
+
+import store from '@/store/store' // store
 import router from './router'
 
-// vadal
-import Vodal from 'vodal'
+import Vodal from 'vodal' // vadal
 
-// normalize
-import 'normalize.css'
+import 'normalize.css' // normalize
 
-// vadal
-import 'vodal/common.css'
+import 'vodal/common.css' // vadal
 import 'vodal/door.css'
 
-// global
-import '@/public/css/index.less'
+import '@/public/css/index.less' // global
 
 import '@/icons' // icons
 

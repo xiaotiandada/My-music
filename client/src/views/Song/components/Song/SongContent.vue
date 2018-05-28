@@ -8,7 +8,7 @@
               <img src="http://imge.kugou.com/stdmusic/20161008/20161008172715434418.jpg" alt="">
             </a>
           </div>
-          <a href="" class="song-album-download">下载这首歌</a>
+          <a href="javascript:;" class="song-album-download">下载这首歌</a>
         </div>
         <div class="song-albumData ri">
           <div class="song-name">
@@ -50,12 +50,12 @@
       <div class="song-module-bg"></div>
       <div class="song-module-player">
         <div class="song-player-left">
-          <a href="" class="icon-player icon-player-prev"></a>
-          <a href="" class="icon-player icon-player-toogle"></a>
-          <a href="" class="icon-player icon-player-next"></a>
+          <a @click="musicPrev" href="javascript:;" class="icon-player icon-player-prev"></a>
+          <a @click="musicToogle" href="javascript:;" class="icon-player icon-player-toogle"></a>
+          <a @click="musicNext" href="javascript:;" class="icon-player icon-player-next"></a>
         </div>
         <div class="song-player-albumImg">
-          <a href="">
+          <a href="javascript:;">
             <img src="http://imge.kugou.com/stdmusic/20180412/20180412102100216136.jpg" alt="">
           </a>
         </div>
@@ -66,31 +66,72 @@
             </div>
             <div class="coding-duration">
               <span>
-                                      <i>00:13</i>
-                                      /
-                                      <i>04:28</i>
-                                    </span>
+                                        <i>00:13</i>
+                                        /
+                                        <i>04:28</i>
+                                      </span>
             </div>
           </div>
           <div class="song-player-bar-bar"></div>
         </div>
         <div class="song-player-right">
-          <a href="" class="icon-player icon-player-maxvox"></a>
-          <a href="" class="icon-player icon-player-cycle"></a>
-          <a href="" class="icon-player icon-player-download"></a>
-          <a href="" class="icon-player icon-player-share"></a>
-          <a href="" class="icon-player icon-player-list">
+          <a href="javascript:;" class="icon-player icon-player-maxvox"></a>
+          <a href="javascript:;" class="icon-player icon-player-cycle"></a>
+          <a href="javascript:;" class="icon-player icon-player-download"></a>
+          <a href="javascript:;" class="icon-player icon-player-share"></a>
+          <a href="javascript:;" class="icon-player icon-player-list">
             <span>20</span>
           </a>
         </div>
       </div>
     </div>
     <div class="song-bg"></div>
+    <div class="song-audio">
+      <audio ref="musicAudio" :src="musicSrc" controls></audio>
+    </div>
   </div>
 </template>
 
 <script>
   export default {
+    data() {
+      return {
+        musicIndex: 0,
+        musicList: [
+          'https://music.163.com/song/media/outer/url?id=450424527.mp3',
+          'https://music.163.com/song/media/outer/url?id=557581284.mp3',
+          'https://music.163.com/song/media/outer/url?id=452986458.mp3'
+        ]
+      }
+    },
+    computed: {
+      musicSrc() {
+        return this.musicList[this.musicIndex]
+      }
+    },
+    methods: {
+      musicPrev() {
+        let index = this.musicIndex - 1
+        if (index < 0) {
+          index = this.musicList.length - 1
+        }
+        this.musicIndex = index
+        this.musicToogle()
+      },
+      musicNext() {
+        let index = this.musicIndex + 1
+        if (index === this.musicList.length) {
+          index = 0
+        }
+        this.musicIndex = index
+        this.musicToogle()
+      },
+      musicToogle() {
+        this.$nextTick(() => {
+          this.$refs.musicAudio.paused ? this.$refs.musicAudio.play() : this.$refs.musicAudio.pause()
+        })
+      }
+    }
   
   }
 </script>
@@ -340,7 +381,8 @@
       width: 60px;
       height: 23px;
       background-position: 0 -120px;
-      span{
+      margin-top: 32px;
+      span {
         margin-left: 26px;
         color: #fff;
         font-size: 14px;
@@ -348,7 +390,7 @@
       }
       &:hover {
         background-position: -61px -120px;
-        span{
+        span {
           color: #1987b2;
         }
       }
@@ -368,7 +410,7 @@
     height: 16px;
     line-height: 16px;
     margin-left: 31.2px;
-    margin-top: 32px;
+    margin-top: 34px;
   }
   
   .song-bg {
@@ -386,5 +428,11 @@
     background-repeat: no-repeat;
     background-size: cover;
     background-image: url(http://imge.kugou.com/stdmusic/20171030/20171030114102986807.jpg);
+  }
+
+  .song-audio{
+    position: absolute;
+    top: 0;
+    z-index: 999;
   }
 </style>

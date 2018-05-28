@@ -4,7 +4,6 @@ import Router from 'vue-router'
 import Index from '@/views/Index'
 
 import AdminLogin from '@/views/admin/Login/Index'
-import MusicAplayer from '@/views/MusicAplayer/Index'
 import Song from '@/views/Song/Index'
 
 Vue.use(Router)
@@ -33,11 +32,6 @@ export const constantRouterMap = [{
   path: '/adminglogin',
   name: 'AdminLogin',
   component: AdminLogin
-},
-{
-  path: '/musicaplayer',
-  name: 'MusicAplayer',
-  component: MusicAplayer
 },
 {
   path: '/song',

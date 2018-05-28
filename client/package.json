@@ -16,13 +16,11 @@
   "dependencies": {
     "axios": "^0.18.0",
     "element-ui": "^2.3.6",
-    "hls.js": "^0.9.1",
     "less": "^3.0.4",
     "less-loader": "^4.1.0",
     "normalize.css": "^8.0.0",
     "vodal": "^2.3.3",
     "vue": "^2.5.2",
-    "vue-aplayer": "^1.5.2",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",
     "vuex-persistedstate": "^2.5.2",

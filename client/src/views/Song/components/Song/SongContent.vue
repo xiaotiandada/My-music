@@ -66,15 +66,23 @@
             </div>
             <div class="coding-duration">
               <span>
-                                <i>00:13</i>
-                                /
-                                <i>04:28</i>
-                              </span>
+                                      <i>00:13</i>
+                                      /
+                                      <i>04:28</i>
+                                    </span>
             </div>
           </div>
           <div class="song-player-bar-bar"></div>
         </div>
-        <div class="song-player-right"></div>
+        <div class="song-player-right">
+          <a href="" class="icon-player icon-player-maxvox"></a>
+          <a href="" class="icon-player icon-player-cycle"></a>
+          <a href="" class="icon-player icon-player-download"></a>
+          <a href="" class="icon-player icon-player-share"></a>
+          <a href="" class="icon-player icon-player-list">
+            <span>20</span>
+          </a>
+        </div>
       </div>
     </div>
     <div class="song-bg"></div>
@@ -292,7 +300,75 @@
     float: left;
     width: 280px;
     height: 80px;
-    background-color: rgb(0, 174, 255);
+    .icon-player-maxvox {
+      background-position: -64px -195px;
+      &:hover {
+        background-position: -80px -195px;
+      }
+      &:active {
+        background-position: -96px -195px;
+      }
+    }
+    .icon-player-cycle {
+      background-position: -64px -179px;
+      &:hover {
+        background-position: -80px -179px;
+      }
+      &:active {
+        background-position: -96px -179px;
+      }
+    }
+    .icon-player-download {
+      background-position: -240px -32px;
+      &:hover {
+        background-position: -256px -32px;
+      }
+      &:active {
+        background-position: -272px -32px;
+      }
+    }
+    .icon-player-share {
+      background-position: -240px 0;
+      &:hover {
+        background-position: -256px 0;
+      }
+      &:active {
+        background-position: -272px 0;
+      }
+    }
+    .icon-player-list {
+      width: 60px;
+      height: 23px;
+      background-position: 0 -120px;
+      span{
+        margin-left: 26px;
+        color: #fff;
+        font-size: 14px;
+        line-height: 23px;
+      }
+      &:hover {
+        background-position: -61px -120px;
+        span{
+          color: #1987b2;
+        }
+      }
+      &:active {
+        background-position: -120px -120px;
+      }
+    }
+  }
+  
+  .icon-player-maxvox,
+  .icon-player-cycle,
+  .icon-player-download,
+  .icon-player-share,
+  .icon-player-list {
+    float: left;
+    width: 16px;
+    height: 16px;
+    line-height: 16px;
+    margin-left: 31.2px;
+    margin-top: 32px;
   }
   
   .song-bg {

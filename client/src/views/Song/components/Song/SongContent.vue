@@ -8,6 +8,7 @@
               <img src="http://imge.kugou.com/stdmusic/20161008/20161008172715434418.jpg" alt="">
             </a>
           </div>
+          <a href="" class="song-album-download">下载这首歌</a>
         </div>
         <div class="song-albumData ri">
           <div class="song-name">
@@ -48,9 +49,31 @@
     <div class="song-module">
       <div class="song-module-bg"></div>
       <div class="song-module-player">
-        <div class="song-player-left"></div>
-        <div class="song-player-albumImg"></div>
-        <div class="song-player-bar"></div>
+        <div class="song-player-left">
+          <a href="" class="icon-player icon-player-prev"></a>
+          <a href="" class="icon-player icon-player-toogle"></a>
+          <a href="" class="icon-player icon-player-next"></a>
+        </div>
+        <div class="song-player-albumImg">
+          <a href="">
+            <img src="http://imge.kugou.com/stdmusic/20180412/20180412102100216136.jpg" alt="">
+          </a>
+        </div>
+        <div class="song-player-bar">
+          <div class="song-player-bar-info">
+            <div class="like-song">
+              <span>终于爱情</span>
+            </div>
+            <div class="coding-duration">
+              <span>
+                                <i>00:13</i>
+                                /
+                                <i>04:28</i>
+                              </span>
+            </div>
+          </div>
+          <div class="song-player-bar-bar"></div>
+        </div>
         <div class="song-player-right"></div>
       </div>
     </div>
@@ -86,13 +109,13 @@
       overflow: hidden;
       .song-album {
         width: 260px;
-        margin-top: 100px;
+        margin-top: 50px;
       }
-      .song-albumData {
-        width: 460px;
-        min-height: 500px;
-        margin-top: 100px;
-      }
+    }
+    .song-albumData {
+      width: 460px;
+      min-height: 500px;
+      margin-top: 30px;
     }
   }
   
@@ -103,6 +126,25 @@
     overflow: hidden;
     img {
       width: 100%;
+    }
+  }
+  
+  .song-album-download {
+    display: block;
+    width: 230px;
+    height: 50px;
+    border: 1px solid #fff;
+    border-radius: 30px;
+    line-height: 50px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 16px;
+    margin-top: 40px;
+    margin-left: 16px;
+    cursor: pointer;
+    transition: all .28s;
+    &:hover {
+      margin-top: 42px;
     }
   }
   
@@ -140,21 +182,110 @@
     float: left;
     width: 210px;
     height: 80px;
-    background-color: #000;
+    .icon-player-prev {
+      float: left;
+      width: 36px;
+      height: 36px;
+      overflow: hidden;
+      background-position: 0 -143px;
+      margin: 22px 6px 0 27px;
+      &:hover {
+        background-position: -36px -143px;
+      }
+      &:active {
+        background-position: -72px -143px;
+      }
+    }
+    .icon-player-toogle {
+      float: left;
+      width: 60px;
+      height: 60px;
+      overflow: hidden;
+      background-position: 0 0;
+      margin: 10px 6px 0;
+      &:hover {
+        background-position: -60px 0;
+      }
+      &:active {
+        background-position: -120px 0;
+      }
+    }
+    .icon-player-next {
+      float: left;
+      width: 36px;
+      height: 36px;
+      overflow: hidden;
+      background-position: -144px -143px;
+      margin: 22px 6px 0;
+      &:hover {
+        background-position: -180px -143px;
+      }
+      &:active {
+        background-position: -216px -143px;
+      }
+    }
   }
   
   .song-player-albumImg {
     float: left;
     width: 110px;
     height: 80px;
-    background-color: rgb(255, 0, 0);
+    overflow: hidden;
+    img {
+      width: 60px;
+      height: 60px;
+      outline: none;
+      border: 0;
+      margin-top: 10px;
+    }
   }
   
   .song-player-bar {
     float: left;
     width: 400px;
     height: 80px;
-    background-color: rgb(251, 255, 0);
+    .song-player-bar-info {
+      padding-top: 18px;
+      height: 24px;
+      cursor: default;
+    }
+    .song-player-bar-bar {
+      margin-top: 11px;
+      height: 5px;
+      cursor: pointer;
+    }
+  }
+  
+  .like-song {
+    float: left;
+    width: 290px;
+    height: 24px;
+    overflow: hidden;
+    span {
+      float: left;
+      word-break: break-all;
+      word-wrap: break-word;
+      white-space: nowrap;
+      line-height: 24px;
+      font-size: 14px;
+      color: #c4c3c3;
+    }
+  }
+  
+  .coding-duration {
+    float: right;
+    width: 110px;
+    height: 24px;
+    span {
+      color: #fff;
+      font-size: 14px;
+      opacity: .4;
+      filter: alpha(opacity=40);
+      line-height: 24px;
+      i {
+        font-style: normal;
+      }
+    }
   }
   
   .song-player-right {

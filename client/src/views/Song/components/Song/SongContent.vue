@@ -51,7 +51,7 @@
       <div class="song-module-player">
         <div class="song-player-left">
           <a @click="musicPrev" href="javascript:;" class="icon-player icon-player-prev"></a>
-          <a @click="musicToogle" href="javascript:;" class="icon-player icon-player-toogle"></a>
+          <a @click="musicToogle" :class="{ 'icon-player-pause' : musicToogleClass, 'icon-player-play' : !musicToogleClass}" href="javascript:;" class="icon-player"></a>
           <a @click="musicNext" href="javascript:;" class="icon-player icon-player-next"></a>
         </div>
         <div class="song-player-albumImg">
@@ -66,13 +66,16 @@
             </div>
             <div class="coding-duration">
               <span>
-                                        <i>00:13</i>
-                                        /
-                                        <i>04:28</i>
-                                      </span>
+                                                <i>00:13</i>
+                                                /
+                                                <i>04:28</i>
+                                              </span>
             </div>
           </div>
-          <div class="song-player-bar-bar"></div>
+          <div class="song-player-bar-bar">
+            <!-- <span class="icon-player icon-playbar-playhead"></span> -->
+            <el-slider class="song-player" v-model="musicPlayhead" :show-tooltip="false" :change="musicPlayheadChange(musicPlayhead)"></el-slider>
+          </div>
         </div>
         <div class="song-player-right">
           <a href="javascript:;" class="icon-player icon-player-maxvox"></a>
@@ -96,6 +99,8 @@
   export default {
     data() {
       return {
+        musicToogleClass: false,
+        musicPlayhead: 0,
         musicIndex: 0,
         musicList: [
           'https://music.163.com/song/media/outer/url?id=450424527.mp3',
@@ -116,7 +121,11 @@
           index = this.musicList.length - 1
         }
         this.musicIndex = index
-        this.musicToogle()
+        this.musicToogleClass = true
+  
+        this.$nextTick(() => {
+          this.$refs.musicAudio.paused ? this.$refs.musicAudio.play() : this.$refs.musicAudio.pause()
+        })
       },
       musicNext() {
         let index = this.musicIndex + 1
@@ -124,12 +133,21 @@
           index = 0
         }
         this.musicIndex = index
-        this.musicToogle()
-      },
-      musicToogle() {
+        this.musicToogleClass = true
+  
         this.$nextTick(() => {
           this.$refs.musicAudio.paused ? this.$refs.musicAudio.play() : this.$refs.musicAudio.pause()
         })
+      },
+      musicToogle() {
+        this.musicToogleClass = !this.musicToogleClass
+  
+        this.$nextTick(() => {
+          this.$refs.musicAudio.paused ? this.$refs.musicAudio.play() : this.$refs.musicAudio.pause()
+        })
+      },
+      musicPlayheadChange(musicPlayhead) {
+        console.log(musicPlayhead)
       }
     }
   
@@ -245,7 +263,7 @@
         background-position: -72px -143px;
       }
     }
-    .icon-player-toogle {
+    .icon-player-play {
       float: left;
       width: 60px;
       height: 60px;
@@ -257,6 +275,20 @@
       }
       &:active {
         background-position: -120px 0;
+      }
+    }
+    .icon-player-pause {
+      float: left;
+      width: 60px;
+      height: 60px;
+      overflow: hidden;
+      background-position: 0 -60px;
+      margin: 10px 6px 0;
+      &:hover {
+        background-position: -60px -60px;
+      }
+      &:active {
+        background-position: -120px -60px;
       }
     }
     .icon-player-next {
@@ -299,9 +331,26 @@
       cursor: default;
     }
     .song-player-bar-bar {
-      margin-top: 11px;
-      height: 5px;
       cursor: pointer;
+      .song-player {
+        padding-left: 6px;
+        padding-right: 6px;
+      }
+      .el-slider__button {
+        border: 0;
+        width: 14px;
+        height: 14px;
+      }
+      .el-slider__button.hover {
+        transform: scale(1.1);
+      }
+      .el-slider__runway,
+      .el-slider__bar {
+        height: 4px;
+      }
+      .el-slider__button-wrapper {
+        top: -16px;
+      }
     }
   }
   
@@ -429,8 +478,8 @@
     background-size: cover;
     background-image: url(http://imge.kugou.com/stdmusic/20171030/20171030114102986807.jpg);
   }
-
-  .song-audio{
+  
+  .song-audio {
     position: absolute;
     top: 0;
     z-index: 999;

@@ -122,6 +122,7 @@
         }
         this.musicIndex = index
         this.musicToogleClass = true
+        this.musicPlayhead = 0
   
         this.$nextTick(() => {
           this.$refs.musicAudio.paused ? this.$refs.musicAudio.play() : this.$refs.musicAudio.pause()
@@ -134,6 +135,7 @@
         }
         this.musicIndex = index
         this.musicToogleClass = true
+        this.musicPlayhead = 0
   
         this.$nextTick(() => {
           this.$refs.musicAudio.paused ? this.$refs.musicAudio.play() : this.$refs.musicAudio.pause()
@@ -148,6 +150,10 @@
       },
       musicPlayheadChange(musicPlayhead) {
         console.log(musicPlayhead)
+        this.$nextTick(() => {
+          this.$refs.musicAudio.currentTime = musicPlayhead
+          this.musicToogle()
+        })
       }
     }
   

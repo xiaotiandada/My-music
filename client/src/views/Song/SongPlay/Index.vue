@@ -1,13 +1,13 @@
 <template>
   <div class="song-page">
     <v-nav></v-nav>
-    <v-song></v-song>
+      <v-song></v-song>
   </div>
 </template>
 
 <script>
   import VNav from '@/views/Nav/Index'
-  import VSong from '@/views/Song/components/Song/SongContent'
+  import VSong from '@/views/Song/components/SongContent'
   export default {
     components: {
       VNav,

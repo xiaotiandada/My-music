@@ -74,7 +74,8 @@
           </div>
           <div class="song-player-bar-bar">
             <!-- <span class="icon-player icon-playbar-playhead"></span> -->
-            <el-slider class="song-player" v-model="musicPlayhead" :show-tooltip="false" :change="musicPlayheadChange(musicPlayhead)"></el-slider>
+             <!-- :change="musicPlayheadChange(musicPlayhead) -->
+            <el-slider class="song-player" v-model="musicPlayhead" :show-tooltip="false"></el-slider>
           </div>
         </div>
         <div class="song-player-right">
@@ -124,9 +125,7 @@
         this.musicToogleClass = true
         this.musicPlayhead = 0
   
-        this.$nextTick(() => {
-          this.$refs.musicAudio.paused ? this.$refs.musicAudio.play() : this.$refs.musicAudio.pause()
-        })
+        this.musicPlay()
       },
       musicNext() {
         let index = this.musicIndex + 1
@@ -137,13 +136,14 @@
         this.musicToogleClass = true
         this.musicPlayhead = 0
   
-        this.$nextTick(() => {
-          this.$refs.musicAudio.paused ? this.$refs.musicAudio.play() : this.$refs.musicAudio.pause()
-        })
+        this.musicPlay()
       },
       musicToogle() {
         this.musicToogleClass = !this.musicToogleClass
-  
+
+        this.musicPlay()
+      },
+      musicPlay() {
         this.$nextTick(() => {
           this.$refs.musicAudio.paused ? this.$refs.musicAudio.play() : this.$refs.musicAudio.pause()
         })

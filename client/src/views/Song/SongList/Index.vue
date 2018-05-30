@@ -2,8 +2,8 @@
   <div class="song-list">
     <v-nav></v-nav>
     <song-list></song-list>
-
-    <v-footer></v-footer>
+  
+    <v-footer :listLink="listLink"></v-footer>
   </div>
 </template>
 
@@ -16,6 +16,39 @@
       VNav,
       VFooter,
       SongList
+    },
+    data() {
+      return {
+        listLink: [{
+          liSrc: 'http://www.kugou.com/about/aboutus.html',
+          liTitle: '关于酷狗'
+        },
+        {
+          liSrc: 'http://www.kugou.com/about/aboutus.html',
+          liTitle: '关于酷狗'
+        },
+        {
+          liSrc: 'http://www.kugou.com/about/aboutus.html',
+          liTitle: '关于酷狗'
+        },
+        {
+          liSrc: 'http://www.kugou.com/about/aboutus.html',
+          liTitle: '关于酷狗'
+        },
+        {
+          liSrc: 'http://www.kugou.com/about/aboutus.html',
+          liTitle: '关于酷狗'
+        },
+        {
+          liSrc: 'http://www.kugou.com/about/aboutus.html',
+          liTitle: '关于酷狗'
+        },
+        {
+          liSrc: 'http://www.kugou.com/about/aboutus.html',
+          liTitle: '关于酷狗'
+        }
+        ]
+      }
     }
   }
 </script>

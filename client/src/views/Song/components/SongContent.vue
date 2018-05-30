@@ -110,6 +110,11 @@
         ]
       }
     },
+    mounted() {
+      // const id = this.$route.params.id
+      const id = this.$route.params.id
+      console.log(id)
+    },
     computed: {
       musicSrc() {
         return this.musicList[this.musicIndex]

@@ -10,34 +10,46 @@
   
     <div class="song-list-ul">
       <ul>
-        <li><a href="">1</a></li>
-        <li><a href="">2</a></li>
-        <li><a href="">3</a></li>
-        <li><a href="">4</a></li>
-        <li><a href="">5</a></li>
-        <li><a href="">6</a></li>
-        <li><a href="">7</a></li>
-        <li><a href="">8</a></li>
-        <li><a href="">9</a></li>
-        <li><a href="">10</a></li>
-        <li><a href="">11</a></li>
-        <li><a href="">12</a></li>
-        <li><a href="">13</a></li>
-        <li><a href="">14</a></li>
-        <li><a href="">15</a></li>
-        <li><a href="">16</a></li>
-        <li><a href="">17</a></li>
-        <li><a href="">18</a></li>
-        <li><a href="">19</a></li>
-        <li><a href="">20</a></li>
+        <li
+        v-for="(item, index) in musiclist" :key="index"><a @click="songPlay(index)" href="javascript:;">{{index+1}} {{item.first}}</a></li>
       </ul>
     </div>
   </div>
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
-  
+    data() {
+      return {
+        musiclist: []
+      }
+    },
+    created() {
+      const _this = this
+      axios.get('http://localhost:3000/search/hot')
+        .then(function(response) {
+          const data = response.data
+          if (data.code === 200) {
+            _this.musiclist = data.result.hots
+          }
+        })
+        .catch(function(error) {
+          console.log(error)
+        })
+    },
+    methods: {
+      songPlay(index) {
+        this.$router.push({
+          name: 'songplay',
+          // name: 'songplay',
+          params: {
+            id: this.musiclist[index].first
+          }
+        })
+        console.log(this.musiclist[index].first)
+      }
+    }
   }
 </script>
 
@@ -89,7 +101,7 @@
         cursor: pointer;
         &:hover {
           background-color: rgb(244, 250, 255);
-          a{
+          a {
             color: #169af3;
           }
         }

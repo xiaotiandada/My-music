@@ -31,21 +31,22 @@ export const constantRouterMap = [{
 },
 {
   path: '/adminglogin',
-  name: 'AdminLogin',
+  name: 'adminglogin',
   component: AdminLogin
 },
 {
   path: '/songlist',
-  name: 'SongList',
+  name: 'songlist',
   component: SongList
 },
 {
   path: '/songplay',
-  name: 'Songplay',
+  name: 'songplay',
   component: Songplay
 },
 {
   path: '/admin',
+  name: 'admin',
   component: Admin,
   redirect: '/admin/index',
   hidden: false,

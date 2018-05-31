@@ -97,27 +97,46 @@
 </template>
 
 <script>
+  import axios from 'axios'
   export default {
     data() {
       return {
         musicToogleClass: false,
         musicPlayhead: 0,
         musicIndex: 0,
-        musicList: [
-          'https://music.163.com/song/media/outer/url?id=450424527.mp3',
-          'https://music.163.com/song/media/outer/url?id=557581284.mp3',
-          'https://music.163.com/song/media/outer/url?id=452986458.mp3'
-        ]
+        musicList: []
       }
     },
-    mounted() {
+    created() {
       // const id = this.$route.params.id
-      const id = this.$route.params.id
-      console.log(id)
+      const id = this.$route.query.id
+      const _this = this
+      // console.log(id)
+      axios.get('http://localhost:3000/music/url?id=' + id)
+        .then((response) => {
+          // console.log(response)
+          const data = response.data
+          if (data.code === 200) {
+            _this.musicList = data.data
+            console.log(data.data)
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    },
+    mounted() {
+      // console.log(this.musicList)
     },
     computed: {
       musicSrc() {
-        return this.musicList[this.musicIndex]
+        let musicUrl = ''
+        const musicListArr = this.musicList
+        for (var i of musicListArr) {
+          console.log(i.url)
+          musicUrl = i.url
+        }
+        return musicUrl
       }
     },
     methods: {

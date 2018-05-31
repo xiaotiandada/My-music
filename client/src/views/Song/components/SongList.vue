@@ -2,7 +2,7 @@
   <div class="songlist">
   
     <div class="songlist-top">
-      <h2 class="songlist-title fl">热门歌单</h2>
+      <h2 class="songlist-title fl">{{musictitle}}</h2>
       <a class="songlist-btn ri" href="javascript:;">播放全部</a>
     </div>
   
@@ -11,7 +11,11 @@
     <div class="song-list-ul">
       <ul>
         <li
-        v-for="(item, index) in musiclist" :key="index"><a @click="songPlay(index)" href="javascript:;">{{index+1}} {{item.first}}</a></li>
+        v-for="(item, index) in musiclist" :key="index">
+        <a 
+        @click="songPlay(index)" 
+        >{{index+1}} {{item.name}}
+        </a></li>
       </ul>
     </div>
   </div>
@@ -22,17 +26,21 @@
   export default {
     data() {
       return {
+        musictitle: '',
         musiclist: []
       }
     },
     created() {
       const _this = this
-      axios.get('http://localhost:3000/search/hot')
+      axios.get('http://localhost:3000/top/list?idx=3')
         .then(function(response) {
           const data = response.data
           if (data.code === 200) {
-            _this.musiclist = data.result.hots
+            _this.musictitle = data.playlist.name
+            _this.musiclist = data.playlist.tracks
+            // console.log(data.playlist.tracks)
           }
+          console.log(data)
         })
         .catch(function(error) {
           console.log(error)
@@ -41,13 +49,13 @@
     methods: {
       songPlay(index) {
         this.$router.push({
-          name: 'songplay',
+          path: 'songplay',
           // name: 'songplay',
-          params: {
-            id: this.musiclist[index].first
+          query: {
+            id: this.musiclist[index].id
           }
         })
-        console.log(this.musiclist[index].first)
+        console.log(this.musiclist[index].id)
       }
     }
   }

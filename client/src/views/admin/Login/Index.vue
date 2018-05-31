@@ -66,7 +66,7 @@ export default {
         this.$store.dispatch('setadminToken', response.data.token)
         this.$store.dispatch('setadminUser', response.data.userName)
           .then(() => {
-            this.$router.push({ path: '/admin' })
+            this.$router.push({ name: 'admin' })
           })
           .catch((error) => {
             console.log(error)

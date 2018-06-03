@@ -5,17 +5,17 @@
         <div class="song-album fl">
           <div class="song-albumImg">
             <a href="">
-              <img src="http://imge.kugou.com/stdmusic/20161008/20161008172715434418.jpg" alt="">
+              <img :src="musicImgUrl" :alt="musicTitle">
             </a>
           </div>
           <a href="javascript:;" class="song-album-download">下载这首歌</a>
         </div>
         <div class="song-albumData ri">
           <div class="song-name">
-            <p>从开始到现在</p>
+            <p>{{musicTitle}}</p>
           </div>
           <div class="song-dateil">
-            <p>
+            <!-- <p>
               <span>专辑：</span>
               <a href="">张信哲Jeff情歌精选</a>
             </p>
@@ -24,24 +24,15 @@
               <span>歌手：</span>
               <a href="">张信哲</a>
             </p>
-  
+   -->
           </div>
           <div class="song-word">
-            <p>张信哲 - 从开始到现在</p>
-            <p>词：李焯雄</p>
-            <p>曲：吴熙俊/刘海俊</p>
-            <p>为何我还忘不了你</p>
-            <p>为何我还忘不了你</p>
-            <p>为何我还忘不了你</p>
-            <p>为何我还忘不了你</p>
-            <p>为何我还忘不了你</p>
-            <p>为何我还忘不了你</p>
-            <p>为何我还忘不了你</p>
-            <p>为何我还忘不了你</p>
-            <p>为何我还忘不了你</p>
-            <p>为何我还忘不了你</p>
-            <p>为何我还忘不了你</p>
-            <p>为何我还忘不了你</p>
+  
+            <p 
+            v-for="(item, index) in musiclrc"
+            :key="index">
+              {{item.text}}</p>
+  
           </div>
         </div>
       </div>
@@ -56,25 +47,25 @@
         </div>
         <div class="song-player-albumImg">
           <a href="javascript:;">
-            <img src="http://imge.kugou.com/stdmusic/20180412/20180412102100216136.jpg" alt="">
+            <img :src="musicImgUrl" :alt="musicTitle">
           </a>
         </div>
         <div class="song-player-bar">
           <div class="song-player-bar-info">
             <div class="like-song">
-              <span>终于爱情</span>
+              <span>{{musicTitle}}</span>
             </div>
             <div class="coding-duration">
               <span>
-                                                <i>00:13</i>
-                                                /
-                                                <i>04:28</i>
-                                              </span>
+                                                    <i>00:13</i>
+                                                    /
+                                                    <i>04:28</i>
+                                                  </span>
             </div>
           </div>
           <div class="song-player-bar-bar">
             <!-- <span class="icon-player icon-playbar-playhead"></span> -->
-             <!-- :change="musicPlayheadChange(musicPlayhead) -->
+            <!-- :change="musicPlayheadChange(musicPlayhead) -->
             <el-slider class="song-player" v-model="musicPlayhead" :show-tooltip="false"></el-slider>
           </div>
         </div>
@@ -89,9 +80,9 @@
         </div>
       </div>
     </div>
-    <div class="song-bg"></div>
+    <div class="song-bg" :style="{ backgroundImage: 'url('+musicImgUrl+')' }"></div>
     <div class="song-audio">
-      <audio ref="musicAudio" :src="musicSrc" controls></audio>
+      <audio ref="musicAudio" :src="musicmp3" controls></audio>
     </div>
   </div>
 </template>
@@ -104,12 +95,18 @@
         musicToogleClass: false,
         musicPlayhead: 0,
         musicIndex: 0,
-        musicList: []
+        musicList: [],
+        musicmp3: '',
+        musicklyric: '',
+        musiclrc: [],
+        musicTitle: '',
+        musicImgUrl: ''
       }
     },
     created() {
       // const id = this.$route.params.id
       const id = this.$route.query.id
+      // console.log(id)
       const _this = this
       // console.log(id)
       axios.get('http://localhost:3000/music/url?id=' + id)
@@ -117,26 +114,46 @@
           // console.log(response)
           const data = response.data
           if (data.code === 200) {
-            _this.musicList = data.data
-            console.log(data.data)
+            _this.musicmp3 = data.data['0'].url
+            console.log(data.data['0'].url)
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+  
+      axios.get('http://localhost:3000/lyric?id=' + id)
+        .then((response) => {
+          const data = response.data
+          if (data.code === 200) {
+            // console.log(data)
+            _this.musicklyric = data.klyric
+            _this.musiclrc = _this.parseLyric(data.lrc.lyric)
+            // console.log(_this.musicklyric)
+            // console.log(_this.musiclrc)
+          }
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+
+      axios.get('http://localhost:3000/song/detail?ids=' + id)
+        .then((response) => {
+          const data = response.data
+          if (data.code === 200) {
+            console.log(data)
+            _this.musicTitle = data.songs['0'].al.name
+            _this.musicImgUrl = data.songs['0'].al.picUrl
           }
         })
         .catch((error) => {
           console.log(error)
         })
     },
-    mounted() {
-      // console.log(this.musicList)
-    },
+    mounted() {},
     computed: {
       musicSrc() {
-        let musicUrl = ''
-        const musicListArr = this.musicList
-        for (var i of musicListArr) {
-          console.log(i.url)
-          musicUrl = i.url
-        }
-        return musicUrl
+        return this.musicList[this.musicIndex]
       }
     },
     methods: {
@@ -164,7 +181,7 @@
       },
       musicToogle() {
         this.musicToogleClass = !this.musicToogleClass
-
+  
         this.musicPlay()
       },
       musicPlay() {
@@ -178,7 +195,33 @@
           this.$refs.musicAudio.currentTime = musicPlayhead
           this.musicToogle()
         })
+      },
+  
+      parseLyric(lrc) {
+        const lyrics = lrc.split('\n')
+        const lrcObj = []
+        for (let i = 0; i < lyrics.length; i++) {
+          const lyric = decodeURIComponent(lyrics[i])
+          const timeReg = /\[\d*:\d*((\.|\:)\d*)*\]/g
+          const timeRegExpArr = lyric.match(timeReg)
+          if (!timeRegExpArr) continue
+          const clause = lyric.replace(timeReg, '')
+          for (let k = 0, h = timeRegExpArr.length; k < h; k++) {
+            const t = timeRegExpArr[k]
+            const min = Number(String(t.match(/\[\d*/i)).slice(1))
+            const sec = Number(String(t.match(/\:\d*/i)).slice(1))
+            const time = min * 60 + sec
+            if (clause !== '') {
+              lrcObj.push({
+                time: time,
+                text: clause
+              })
+            }
+          }
+        }
+        return lrcObj
       }
+  
     }
   
   }
@@ -239,10 +282,10 @@
     margin-top: 40px;
     margin-left: 16px;
     cursor: pointer;
-    transition: all .28s;
-    &:hover {
-      margin-top: 42px;
-    }
+    // transition: all .28s;
+    // &:hover {
+    //   margin-top: 42px;
+    // }
   }
   
   .song-word {
@@ -513,5 +556,6 @@
     position: absolute;
     top: 0;
     z-index: 999;
+    display: none;
   }
 </style>

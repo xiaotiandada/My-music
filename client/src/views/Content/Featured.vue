@@ -12,7 +12,7 @@
       class="cpt" 
       :key="index" 
       :class="[ item.playId ? 'cptMid' : 'cptBig'  ]">
-        <a href="#" target="_blank" class="itemZA">
+        <a href="/songplay?id=557581284" target="_blank" class="itemZA">
           <div class="play_btn">{{item.playText}}</div>
         </a>
         <p class="cptT">

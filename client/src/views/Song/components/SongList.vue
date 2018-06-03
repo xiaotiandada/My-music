@@ -3,7 +3,7 @@
   
     <div class="songlist-top">
       <h2 class="songlist-title fl">{{musictitle}}</h2>
-      <a class="songlist-btn ri" href="javascript:;">播放全部</a>
+      <!-- <a class="songlist-btn ri" href="javascript:;">播放全部</a> -->
     </div>
   
     <hr class="songlist-hr">
@@ -13,6 +13,7 @@
         <li
         v-for="(item, index) in musiclist" :key="index">
         <a 
+        
         @click="songPlay(index)" 
         >{{index+1}} {{item.name}}
         </a></li>

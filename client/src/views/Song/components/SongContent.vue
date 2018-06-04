@@ -16,21 +16,19 @@
           </div>
           <div class="song-dateil">
             <!-- <p>
-              <span>专辑：</span>
-              <a href="">张信哲Jeff情歌精选</a>
-            </p>
-  
-            <p>
-              <span>歌手：</span>
-              <a href="">张信哲</a>
-            </p>
-   -->
+                      <span>专辑：</span>
+                      <a href="">张信哲Jeff情歌精选</a>
+                    </p>
+          
+                    <p>
+                      <span>歌手：</span>
+                      <a href="">张信哲</a>
+                    </p>
+           -->
           </div>
           <div class="song-word">
   
-            <p 
-            v-for="(item, index) in musiclrc"
-            :key="index">
+            <p v-for="(item, index) in musiclrc" :key="index">
               {{item.text}}</p>
   
           </div>
@@ -57,10 +55,10 @@
             </div>
             <div class="coding-duration">
               <span>
-                                                    <i>00:13</i>
-                                                    /
-                                                    <i>04:28</i>
-                                                  </span>
+                                                            <i>00:13</i>
+                                                            /
+                                                            <i>04:28</i>
+                                                          </span>
             </div>
           </div>
           <div class="song-player-bar-bar">
@@ -75,8 +73,13 @@
           <a href="javascript:;" class="icon-player icon-player-download"></a>
           <a href="javascript:;" class="icon-player icon-player-share"></a>
           <a href="javascript:;" class="icon-player icon-player-list">
-            <span>20</span>
+            <span>{{musicBarlist.length}}</span>
           </a>
+        </div>
+        <div class="song-player-list">
+          <ul>
+            <li v-for="(item, index) in musicBarlist" :key="index"><a @click="songPlayBarList(index)" href="">{{index+1}} {{item.name}}</a></li>
+          </ul>
         </div>
       </div>
     </div>
@@ -100,7 +103,8 @@
         musicklyric: '',
         musiclrc: [],
         musicTitle: '',
-        musicImgUrl: ''
+        musicImgUrl: '',
+        musicBarlist: []
       }
     },
     created() {
@@ -115,7 +119,7 @@
           const data = response.data
           if (data.code === 200) {
             _this.musicmp3 = data.data['0'].url
-            console.log(data.data['0'].url)
+            // console.log(data.data['0'].url)
           }
         })
         .catch((error) => {
@@ -136,17 +140,30 @@
         .catch((error) => {
           console.log(error)
         })
-
+  
       axios.get('http://localhost:3000/song/detail?ids=' + id)
         .then((response) => {
           const data = response.data
           if (data.code === 200) {
-            console.log(data)
+            // console.log(data)
             _this.musicTitle = data.songs['0'].al.name
             _this.musicImgUrl = data.songs['0'].al.picUrl
           }
         })
         .catch((error) => {
+          console.log(error)
+        })
+  
+      axios.get('http://localhost:3000/top/list?idx=3')
+        .then(function(response) {
+          const data = response.data
+          if (data.code === 200) {
+            _this.musicBarlist = data.playlist.tracks
+            // console.log(data.playlist.tracks)
+          }
+          console.log(data)
+        })
+        .catch(function(error) {
           console.log(error)
         })
     },
@@ -220,6 +237,17 @@
           }
         }
         return lrcObj
+      },
+  
+      songPlayBarList(index) {
+        this.$router.push({
+          path: 'songplay',
+          // name: 'songplay',
+          query: {
+            id: this.musicBarlist[index].id
+          }
+        })
+        console.log(this.musicBarlist[index].id)
       }
   
     }
@@ -315,6 +343,44 @@
       width: 1000px;
       height: 80px;
       margin: 0 auto;
+      .song-player-list {
+        position: absolute;
+        right: 0;
+        top: -410px;
+        width: 480px;
+        height: 410px;
+        background-color: #2a2e35;
+        display: block;
+        overflow: auto;
+        border-radius: 3px;
+        overflow-x: hidden;
+        ul {
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          li {
+            border-bottom: 1px solid #40444b;
+            padding: 2px 10px;
+            &:hover {
+              background-color: #363a41;
+            }
+            a {
+              color: #fff;
+              line-height: 40px;
+              width: 100%;
+              height: 40px;
+              line-height: 40px;
+              display: block;
+              text-align: left;
+              // background-color: #40444b;
+              cursor: pointer;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+              overflow: hidden;
+            }
+          }
+        }
+      }
     }
   }
   

@@ -23,9 +23,12 @@ import '@/public/css/index.less' // global
 
 import '@/icons' // icons
 
+import VCharts from 'v-charts' // v-charts
+
 Vue.config.productionTip = false
 Vue.use(ElementUI)
 Vue.component(Vodal.name, Vodal)
+Vue.use(VCharts)
 
 sync(store, router)
 

@@ -30,8 +30,8 @@ export const constantRouterMap = [{
   component: Index
 },
 {
-  path: '/adminglogin',
-  name: 'adminglogin',
+  path: '/adminlogin',
+  name: 'adminlogin',
   component: AdminLogin
 },
 {

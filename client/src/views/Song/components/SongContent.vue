@@ -72,11 +72,11 @@
           <a href="javascript:;" class="icon-player icon-player-cycle"></a>
           <a href="javascript:;" class="icon-player icon-player-download"></a>
           <a href="javascript:;" class="icon-player icon-player-share"></a>
-          <a href="javascript:;" class="icon-player icon-player-list">
+          <a @click="musicToogleList" href="javascript:;" class="icon-player icon-player-list">
             <span>{{musicBarlist.length}}</span>
           </a>
         </div>
-        <div class="song-player-list">
+        <div class="song-player-list"  :class="{'musicshow': musicBarlistClass}">
           <ul>
             <li v-for="(item, index) in musicBarlist" :key="index"><a @click="songPlayBarList(index)" href="">{{index+1}} {{item.name}}</a></li>
           </ul>
@@ -104,7 +104,8 @@
         musiclrc: [],
         musicTitle: '',
         musicImgUrl: '',
-        musicBarlist: []
+        musicBarlist: [],
+        musicBarlistClass: false
       }
     },
     created() {
@@ -248,6 +249,9 @@
           }
         })
         console.log(this.musicBarlist[index].id)
+      },
+      musicToogleList() {
+        this.musicBarlistClass = !this.musicBarlistClass
       }
   
     }
@@ -286,6 +290,11 @@
       margin-top: 30px;
     }
   }
+  .song-name{
+    p{
+      color: #fff;
+    }
+  }
   
   .song-albumImg {
     width: 260px;
@@ -320,6 +329,11 @@
     width: 460px;
     height: 410px;
     overflow: auto;
+    p{
+      color: #fff;
+      font-size: 16px;
+      font-weight: normal;
+    }
   }
   
   .song-module {
@@ -350,7 +364,7 @@
         width: 480px;
         height: 410px;
         background-color: #2a2e35;
-        display: block;
+        display: none;
         overflow: auto;
         border-radius: 3px;
         overflow-x: hidden;
@@ -623,5 +637,9 @@
     top: 0;
     z-index: 999;
     display: none;
+  }
+
+  .musicshow{
+    display: block !important;
   }
 </style>

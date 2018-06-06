@@ -61,7 +61,7 @@
   }
 </script>
 
-<style lang="less">
+<style lang="less" scoped>
   .charts{
     background: rgb(255, 255, 255);
     padding: 16px 16px 0px;

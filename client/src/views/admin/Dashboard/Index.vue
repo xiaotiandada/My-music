@@ -1,18 +1,21 @@
 <template>
   <div class="dashboard-container">
     <panel-group></panel-group>
-    <charts></charts>
+    <user-charts></user-charts>
+    <comprehensive-charts></comprehensive-charts>
   </div>
 </template>
 
 <script>
-import PanelGroup from './components/PanelGroup'
-import Charts from './components/Charts'
+import PanelGroup from './PanelGroup/PanelGroup.vue'
+import UserCharts from './Charts/UserCharts.vue'
+import ComprehensiveCharts from './Charts/ComprehensiveCharts.vue'
 export default {
   name: 'Dashboard',
   components: {
     PanelGroup,
-    Charts
+    UserCharts,
+    ComprehensiveCharts
   }
 }
 </script>

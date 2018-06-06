@@ -1,6 +1,6 @@
 <template>
   <el-row class="charts">
-    <el-col :xs="24" :sm="24" :lg="8" >
+    <el-col :xs="24" :sm="24" :lg="8">
       <ve-pie :data="chartData" :settings="chartSettings" class="comprehensive-charts"></ve-pie>
     </el-col>
     <el-col :xs="24" :sm="24" :lg="8">
@@ -57,12 +57,13 @@
     // background: rgb(255, 255, 255);
     // padding: 16px 16px 0px;
     // margin-bottom: 32px;
-        margin-left: -16px;
+    margin-left: -16px;
     margin-right: -16px;
   }
-  .comprehensive-charts{
-margin-left: 16px;
-margin-right: 16px;
+  
+  .comprehensive-charts {
+    margin-left: 16px;
+    margin-right: 16px;
     background-color: #fff;
   }
 </style>

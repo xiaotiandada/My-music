@@ -90,6 +90,21 @@ export const constantRouterMap = [{
       icon: 'table'
     }
   }]
+},
+{
+  path: '/users',
+  component: Admin,
+  hidden: false,
+  children: [{
+    path: 'index',
+    name: 'about',
+    component: () =>
+        import('@/views/admin/User/Index'),
+    meta: {
+      title: '个人中心',
+      icon: 'table'
+    }
+  }]
 }
 ]
 

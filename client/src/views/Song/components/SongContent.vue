@@ -91,7 +91,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import musicService from '@/services/musicService'
   export default {
     data() {
       return {
@@ -111,62 +111,10 @@
     created() {
       // const id = this.$route.params.id
       const id = this.$route.query.id
-      // console.log(id)
-      const _this = this
-      // console.log(id)
-      axios.get('http://localhost:3000/music/url?id=' + id)
-        .then((response) => {
-          // console.log(response)
-          const data = response.data
-          if (data.code === 200) {
-            _this.musicmp3 = data.data['0'].url
-            // console.log(data.data['0'].url)
-          }
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-
-      axios.get('http://localhost:3000/lyric?id=' + id)
-        .then((response) => {
-          const data = response.data
-          if (data.code === 200) {
-            // console.log(data)
-            _this.musicklyric = data.klyric
-            _this.musiclrc = _this.parseLyric(data.lrc.lyric)
-            // console.log(_this.musicklyric)
-            // console.log(_this.musiclrc)
-          }
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-
-      axios.get('http://localhost:3000/song/detail?ids=' + id)
-        .then((response) => {
-          const data = response.data
-          if (data.code === 200) {
-            // console.log(data)
-            _this.musicTitle = data.songs['0'].al.name
-            _this.musicImgUrl = data.songs['0'].al.picUrl
-          }
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-
-      axios.get('http://localhost:3000/top/list?idx=3')
-        .then(function(response) {
-          const data = response.data
-          if (data.code === 200) {
-            _this.musicBarlist = data.playlist.tracks
-            // console.log(data.playlist.tracks)
-          }
-          console.log(data)
-        })
-        .catch(function(error) {
-          console.log(error)
-        })
+      this.getMusicUrl(id)
+      this.gelyricUrl(id)
+      this.getSongDetail(id)
+      this.getTopList()
     },
     mounted() {},
     computed: {
@@ -250,8 +198,82 @@
         })
         console.log(this.musicBarlist[index].id)
       },
+
+      // 请求方法
       musicToogleList() {
         this.musicBarlistClass = !this.musicBarlistClass
+      },
+      async getTopList() {
+        const _this = this
+        try {
+          await musicService.topList()
+            .then(function(response) {
+              const data = response.data
+              if (data.code === 200) {
+                _this.musicBarlist = data.playlist.tracks
+              }
+            })
+            .catch(function(error) {
+              console.log(error)
+            })
+        } catch (e) {
+          console.log(e)
+        }
+      },
+      async getMusicUrl(id){
+        const _this = this
+        try {
+          await musicService.getMusicUrl(id)
+            .then(function (response) {
+              const data = response.data
+              if (data.code === 200) {
+                _this.musicmp3 = data.data['0'].url
+              }
+            })
+            .catch(function (err) {
+              console.log(err)
+            })
+        } catch (e) {
+          console.log(e)
+        }
+      },
+      async gelyricUrl(id){
+        const _this = this
+        try {
+          await musicService.gelyricUrl(id)
+            .then((response) => {
+                  const data = response.data
+                  if (data.code === 200) {
+                    // console.log(data)
+                    _this.musicklyric = data.klyric
+                    _this.musiclrc = _this.parseLyric(data.lrc.lyric)
+                  }
+                })
+                .catch((error) => {
+                  console.log(error)
+                })
+        } catch (e) {
+          console.log(e)
+        }
+      },
+      async getSongDetail(id){
+        const _this = this
+        try {
+          await musicService.getSongDetail(id)
+            .then((response) => {
+                  const data = response.data
+                  if (data.code === 200) {
+                    // console.log(data)
+                    _this.musicTitle = data.songs['0'].al.name
+                    _this.musicImgUrl = data.songs['0'].al.picUrl
+                  }
+                })
+                .catch((error) => {
+                  console.log(error)
+                })
+        } catch (e) {
+          console.log(e)
+        }
       }
 
     }

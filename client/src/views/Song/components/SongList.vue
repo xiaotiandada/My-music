@@ -1,20 +1,20 @@
 <template>
   <div class="songlist">
-  
+
     <div class="songlist-top">
       <h2 class="songlist-title fl">{{musictitle}}</h2>
       <!-- <a class="songlist-btn ri" href="javascript:;">播放全部</a> -->
     </div>
-  
+
     <hr class="songlist-hr">
-  
+
     <div class="song-list-ul">
       <ul>
         <li
         v-for="(item, index) in musiclist" :key="index">
-        <a 
-        
-        @click="songPlay(index)" 
+        <a
+
+        @click="songPlay(index)"
         >{{index+1}} {{item.name}}
         </a></li>
       </ul>
@@ -23,7 +23,7 @@
 </template>
 
 <script>
-  import axios from 'axios'
+  import musicService from '@/services/musicService'
   export default {
     data() {
       return {
@@ -32,20 +32,7 @@
       }
     },
     created() {
-      const _this = this
-      axios.get('http://localhost:3000/top/list?idx=3')
-        .then(function(response) {
-          const data = response.data
-          if (data.code === 200) {
-            _this.musictitle = data.playlist.name
-            _this.musiclist = data.playlist.tracks
-            // console.log(data.playlist.tracks)
-          }
-          console.log(data)
-        })
-        .catch(function(error) {
-          console.log(error)
-        })
+      this.getTopList()
     },
     methods: {
       songPlay(index) {
@@ -57,6 +44,24 @@
           }
         })
         console.log(this.musiclist[index].id)
+      },
+      async getTopList() {
+        const _this = this
+        try {
+          await musicService.topList()
+            .then(function(response) {
+              const data = response.data
+              if (data.code === 200) {
+                _this.musictitle = data.playlist.name
+                _this.musiclist = data.playlist.tracks
+              }
+            })
+            .catch(function(error) {
+              console.log(error)
+            })
+        } catch (e) {
+          console.log(e)
+        }
       }
     }
   }
@@ -68,7 +73,7 @@
     margin: 0 auto;
     overflow: hidden;
   }
-  
+
   .songlist-top {
     overflow: hidden;
     .songlist-title {
@@ -86,13 +91,13 @@
       font-size: 14px;
     }
   }
-  
+
   .songlist-hr {
     border: 0;
     border-top: 1px solid #ecf0f1;
     margin-top: 20px;
   }
-  
+
   .song-list-ul {
     overflow: hidden;
     width: 100%;

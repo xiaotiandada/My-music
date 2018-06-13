@@ -1,0 +1,124 @@
+/*nav*/
+.navWrap{
+  width: 100%;
+  height: 55px;
+  background-color: #2c323b;
+  .nav{
+    width: 1000px;
+    margin: 0 auto;
+    position: relative;
+  }
+}
+
+.homeNav{
+  width: 437px;
+  height: 55px;
+  float: left;
+  margin: 0;
+  padding: 0;
+  li{
+    height: 55px;
+    float: left;
+    line-height: 55px;
+    list-style: none;
+    a{
+      color: #fff;
+      display: block;
+      padding: 0 30px;
+      text-align: center;
+      font-size: 14px;
+      &:hover{
+        background-color: #0c8ed9;
+      }
+    }
+    i.icon{
+      position: absolute;
+      left: 80px;
+      top:24px;
+      display: block;
+      width: 16px;
+      height:16px;
+      z-index: 99;
+      background: url(../img/arrowMored.png) no-repeat;
+    }
+  }
+  &::after{
+    display: block;
+    clear: both;
+    content: ".";
+    visibility: hidden;
+    height: 0;
+    font-size: 0;
+  }
+}
+
+.subNav{
+  margin: 0;
+  padding: 0;
+  float: right;
+  li{
+    list-style: none;
+    height: 55px;
+    float: left;
+    line-height: 55px;
+    margin-left: 10px;
+    padding: 0 10px;
+    a{
+      font-size: 13px;
+      color: #bbb;
+      padding-left: 20px;
+      text-align: center;
+      /*background: url(../img/sprite.png) no-repeat 0 -120px;*/
+    }
+  }
+}
+
+.subNav li .icon{
+  background: url(../img/sprite.png) no-repeat;
+}
+.subNav li .icon-nav1{
+  background-position: 0 -124px;
+}
+
+.subNav li .icon-nav2{
+  background-position: 0 -160px;
+}
+
+.subNav li .icon-nav3{
+  background-position: 0 -196px;
+}
+
+.subNav li .icon-nav4{
+  background-position: 0 -231px;
+}
+
+.subNav li .icon-nav5{
+  background-position: 0 -286px;
+}
+
+
+
+.subNav li .icon-nav1:hover{
+  background-position: 0 -106px;
+}
+
+.subNav li .icon-nav2:hover{
+  background-position: 0 -142px;
+}
+
+.subNav li .icon-nav3:hover{
+  background-position: 0 -178px;
+}
+
+.subNav li .icon-nav4:hover{
+  background-position: 0 -213px;
+}
+
+.subNav li .icon-nav5:hover{
+  background-position: 0 -250px;
+}
+
+/*一个icon是18px*/
+
+
+/*nav end*/

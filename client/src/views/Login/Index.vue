@@ -108,35 +108,5 @@ export default {
 </script>
 
 <style lang="less">
-  .logfrom{
-    padding: 34px;
-  }
-  .logButton{
-    width: 100%;
-  }
-  .logSpan{
-    padding: 0;
-    color: #889aa4;
-    vertical-align: middle;
-    width: 60px;
-    height: 38px;
-    display: inline-block;
-    font-size: 14px;
-    line-height: 42px;
-  }
-  .el-input{
-    display: inline-block;
-    height: 38px;
-    width: 78%;
-  }
-  .logInput{
-    border: 1px solid #e6e6e6;
-    background: transparent;
-    border-radius: 3px;
-    color: #454545;
-    line-height: 38px;
-  }
-  .el-input__inner{
-    border: none;
-  }
+
 </style>

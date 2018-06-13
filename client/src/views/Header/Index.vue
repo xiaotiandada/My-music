@@ -132,59 +132,5 @@
 </script>
 
 <style lang="less">
-.login_user{
-  float: left;
-  margin: 16px 0 0 80px;
-}
-.user-img{
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
-}
 
-.user-img img{
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-}
-.user-menu{
-  border: 0;
-}
-  .search_wrapper{
-    position: relative;
-  }
-  .search_wrapper_content{
-    position: absolute;
-    width: 300px;
-    background: #f2f2f2;
-    top: 56px;
-    left: 20px;
-    z-index: 999;
-    border-left: 1px solid #ccc;
-    border-right: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    box-sizing: border-box;
-    box-shadow: 0 4px 12px 0 rgba(7,17,27,.1);
-    ul{
-      margin: 0;
-      padding: 0;
-      li{
-        list-style: none;
-        a{
-          display: block;
-          width: 100%;
-          height: 40px;
-          line-height: 40px;
-          color: #505050;
-          font-size: 14px;
-          font-weight: normal;
-          font-style: normal;
-          &:hover{
-            background: #e4e4e4;
-          }
-        }
-      }
-    }
-  }
 </style>

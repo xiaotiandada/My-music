@@ -2,7 +2,7 @@
   <div class="admin-layout">
     <sidebar class="admin-sidebar"></sidebar>
     <div class="admin-main">
-      <navbar></navbar>  
+      <navbar></navbar>
       <app-main></app-main>
     </div>
   </div>
@@ -22,7 +22,6 @@
 </script>
 
 <style lang='less'>
-  @import '../../public/css/style.less';
   @import '../../public/css/mixin.less';
   .admin-layout {
     .clearfix();

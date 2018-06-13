@@ -115,57 +115,5 @@ export default {
 </script>
 
 <style lang="less">
-.admin-login{
-  position: fixed;
-  width: 100%;
-  height: 100%;
-  background-color: #2d3a4b;
-}
 
-  .logButton{
-    width: 100%;
-  }
-  .logSpan{
-    padding: 0;
-    color: #889aa4;
-    vertical-align: middle;
-    width: 60px;
-    height: 38px;
-    display: inline-block;
-    font-size: 14px;
-    line-height: 42px;
-  }
-  .el-input{
-    display: inline-block;
-    height: 38px;
-    width: 78%;
-  }
-  .logInput{
-    line-height: 38px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 5px;
-    color: #454545;
-  }
-  .el-input__inner{
-    border: none;
-    background: transparent;
-    color: #fff;
-  }
-
-  .el-form{
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 450px;
-    padding: 35px 35px 15px 35px;
-    margin: 120px auto;
-  }
-  .admin-login-title{
-    color: #fff;
-    font-size: 26px;
-    text-align: center;
-    font-weight: bold;
-    margin: 0px auto 40px auto;
-  }
 </style>

@@ -22,19 +22,19 @@
     background-position: center;
     background-size: cover;
   }
-  
+
   .item1 {
     background-image: url(../../public/img/banner1.jpg);
   }
-  
+
   .item2 {
     background-image: url(../../public/img/banner2.jpg);
   }
-  
+
   .item3 {
     background-image: url(../../public/img/banner3.jpg);
   }
-  
+
   .item4 {
     background-image: url(../../public/img/banner4.jpg);
   }

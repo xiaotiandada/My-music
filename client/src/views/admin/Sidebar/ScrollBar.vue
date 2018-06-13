@@ -44,7 +44,7 @@ export default {
 
 <style lang='less' scoped>
 .scroll-container{
-  position: relative;
+  /*position: relative;*/
   width: 100%;
   height: 100%;
   background: #304156;

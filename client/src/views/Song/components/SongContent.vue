@@ -19,7 +19,7 @@
                       <span>专辑：</span>
                       <a href="">张信哲Jeff情歌精选</a>
                     </p>
-          
+
                     <p>
                       <span>歌手：</span>
                       <a href="">张信哲</a>
@@ -27,10 +27,10 @@
            -->
           </div>
           <div class="song-word">
-  
+
             <p v-for="(item, index) in musiclrc" :key="index">
               {{item.text}}</p>
-  
+
           </div>
         </div>
       </div>
@@ -126,7 +126,7 @@
         .catch((error) => {
           console.log(error)
         })
-  
+
       axios.get('http://localhost:3000/lyric?id=' + id)
         .then((response) => {
           const data = response.data
@@ -141,7 +141,7 @@
         .catch((error) => {
           console.log(error)
         })
-  
+
       axios.get('http://localhost:3000/song/detail?ids=' + id)
         .then((response) => {
           const data = response.data
@@ -154,7 +154,7 @@
         .catch((error) => {
           console.log(error)
         })
-  
+
       axios.get('http://localhost:3000/top/list?idx=3')
         .then(function(response) {
           const data = response.data
@@ -183,7 +183,7 @@
         this.musicIndex = index
         this.musicToogleClass = true
         this.musicPlayhead = 0
-  
+
         this.musicPlay()
       },
       musicNext() {
@@ -194,12 +194,12 @@
         this.musicIndex = index
         this.musicToogleClass = true
         this.musicPlayhead = 0
-  
+
         this.musicPlay()
       },
       musicToogle() {
         this.musicToogleClass = !this.musicToogleClass
-  
+
         this.musicPlay()
       },
       musicPlay() {
@@ -214,7 +214,7 @@
           this.musicToogle()
         })
       },
-  
+
       parseLyric(lrc) {
         const lyrics = lrc.split('\n')
         const lrcObj = []
@@ -239,7 +239,7 @@
         }
         return lrcObj
       },
-  
+
       songPlayBarList(index) {
         this.$router.push({
           path: 'songplay',
@@ -253,9 +253,9 @@
       musicToogleList() {
         this.musicBarlistClass = !this.musicBarlistClass
       }
-  
+
     }
-  
+
   }
 </script>
 
@@ -267,7 +267,7 @@
     background: #000;
     overflow: hidden;
   }
-  
+
   .song-content {
     position: relative;
     width: 100%;
@@ -295,7 +295,7 @@
       color: #fff;
     }
   }
-  
+
   .song-albumImg {
     width: 260px;
     height: 260px;
@@ -305,7 +305,7 @@
       width: 100%;
     }
   }
-  
+
   .song-album-download {
     display: block;
     width: 230px;
@@ -324,7 +324,7 @@
     //   margin-top: 42px;
     // }
   }
-  
+
   .song-word {
     width: 460px;
     height: 410px;
@@ -335,7 +335,7 @@
       font-weight: normal;
     }
   }
-  
+
   .song-module {
     position: fixed;
     width: 100%;
@@ -397,7 +397,7 @@
       }
     }
   }
-  
+
   .song-player-left {
     float: left;
     width: 210px;
@@ -459,7 +459,7 @@
       }
     }
   }
-  
+
   .song-player-albumImg {
     float: left;
     width: 110px;
@@ -473,7 +473,7 @@
       margin-top: 10px;
     }
   }
-  
+
   .song-player-bar {
     float: left;
     width: 400px;
@@ -506,7 +506,7 @@
       }
     }
   }
-  
+
   .like-song {
     float: left;
     width: 290px;
@@ -522,7 +522,7 @@
       color: #c4c3c3;
     }
   }
-  
+
   .coding-duration {
     float: right;
     width: 110px;
@@ -538,7 +538,7 @@
       }
     }
   }
-  
+
   .song-player-right {
     float: left;
     width: 280px;
@@ -601,7 +601,7 @@
       }
     }
   }
-  
+
   .icon-player-maxvox,
   .icon-player-cycle,
   .icon-player-download,
@@ -614,7 +614,7 @@
     margin-left: 31.2px;
     margin-top: 34px;
   }
-  
+
   .song-bg {
     position: absolute;
     top: 0;
@@ -631,7 +631,7 @@
     background-size: cover;
     background-image: url(http://imge.kugou.com/stdmusic/20171030/20171030114102986807.jpg);
   }
-  
+
   .song-audio {
     position: absolute;
     top: 0;

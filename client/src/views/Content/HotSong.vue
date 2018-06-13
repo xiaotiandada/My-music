@@ -4,12 +4,12 @@
       <h3 class="rmgd">
         <b>精选</b> 歌单
       </h3>
-      <a href="#" target="_blank" class="moreRR">更多</a>
+      <a href="/songlist" target="_blank" class="moreRR">更多</a>
     </div>
-  
+
     <div class="itemComtentR">
-      <div v-for="(item, index) in listItem" 
-      :key="index" 
+      <div v-for="(item, index) in listItem"
+      :key="index"
       class="listItem">
         <a href="#">
           <div class="Cover">
@@ -41,5 +41,5 @@
 </script>
 
 <style>
-  
+
 </style>

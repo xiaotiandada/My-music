@@ -47,21 +47,18 @@
       },
       async getTopList() {
         const _this = this
-        try {
-          await musicService.topList()
-            .then(function(response) {
-              const data = response.data
-              if (data.code === 200) {
-                _this.musictitle = data.playlist.name
-                _this.musiclist = data.playlist.tracks
-              }
-            })
-            .catch(function(error) {
-              console.log(error)
-            })
-        } catch (e) {
-          console.log(e)
-        }
+        await musicService.getTopList()
+          .then(function(response) {
+            const data = response.data
+            console.log(data)
+            if (data.code === 200) {
+              _this.musictitle = data.playlist.name
+              _this.musiclist = data.playlist.tracks
+            }
+          })
+          .catch(function(error) {
+            console.log(error)
+          })
       }
     }
   }

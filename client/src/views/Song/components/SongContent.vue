@@ -187,7 +187,6 @@
         }
         return lrcObj
       },
-
       songPlayBarList(index) {
         this.$router.push({
           path: 'songplay',
@@ -205,75 +204,58 @@
       },
       async getTopList() {
         const _this = this
-        try {
-          await musicService.topList()
-            .then(function(response) {
-              const data = response.data
-              if (data.code === 200) {
-                _this.musicBarlist = data.playlist.tracks
-              }
-            })
-            .catch(function(error) {
-              console.log(error)
-            })
-        } catch (e) {
-          console.log(e)
-        }
+        await musicService.getTopList()
+          .then(function(response) {
+            const data = response.data
+            if (data.code === 200) {
+              _this.musicBarlist = data.playlist.tracks
+            }
+          })
+          .catch(function(error) {
+            console.log(error)
+          })
       },
-      async getMusicUrl(id){
+      async getMusicUrl(id) {
         const _this = this
-        try {
-          await musicService.getMusicUrl(id)
-            .then(function (response) {
-              const data = response.data
-              if (data.code === 200) {
-                _this.musicmp3 = data.data['0'].url
-              }
-            })
-            .catch(function (err) {
-              console.log(err)
-            })
-        } catch (e) {
-          console.log(e)
-        }
+        await musicService.getMusicUrl(id)
+          .then(function(response) {
+            const data = response.data
+            if (data.code === 200) {
+              _this.musicmp3 = data.data['0'].url
+            }
+          })
+          .catch(function(err) {
+            console.log(err)
+          })
       },
-      async gelyricUrl(id){
+      async gelyricUrl(id) {
         const _this = this
-        try {
-          await musicService.gelyricUrl(id)
-            .then((response) => {
-                  const data = response.data
-                  if (data.code === 200) {
-                    // console.log(data)
-                    _this.musicklyric = data.klyric
-                    _this.musiclrc = _this.parseLyric(data.lrc.lyric)
-                  }
-                })
-                .catch((error) => {
-                  console.log(error)
-                })
-        } catch (e) {
-          console.log(e)
-        }
+        await musicService.gelyricUrl(id)
+          .then((response) => {
+            const data = response.data
+            if (data.code === 200) {
+              _this.musicklyric = data.klyric
+              _this.musiclrc = _this.parseLyric(data.lrc.lyric)
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+          })
       },
-      async getSongDetail(id){
+      async getSongDetail(id) {
         const _this = this
-        try {
-          await musicService.getSongDetail(id)
-            .then((response) => {
-                  const data = response.data
-                  if (data.code === 200) {
-                    // console.log(data)
-                    _this.musicTitle = data.songs['0'].al.name
-                    _this.musicImgUrl = data.songs['0'].al.picUrl
-                  }
-                })
-                .catch((error) => {
-                  console.log(error)
-                })
-        } catch (e) {
-          console.log(e)
-        }
+        await musicService.getSongDetail(id)
+          .then((response) => {
+            const data = response.data
+            if (data.code === 200) {
+              // console.log(data)
+              _this.musicTitle = data.songs['0'].al.name
+              _this.musicImgUrl = data.songs['0'].al.picUrl
+            }
+          })
+          .catch((error) => {
+            console.log(error)
+          })
       }
 
     }

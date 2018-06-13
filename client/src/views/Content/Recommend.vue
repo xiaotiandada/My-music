@@ -4,11 +4,11 @@
                     <h3 class="tjmv">
                         <b>精选</b> 歌单
                     </h3>
-                    <a href="#" target="_blank" class="moreRR">更多</a>
+                    <a href="/songlist" target="_blank" class="moreRR">更多</a>
                 </div>
-                <div v-for="(item, index) in listRecommend" 
-                :class="[ item.reId ? 'itemTwoRightContentMidl': 'itemTwoRightContentBigL' ]" 
-                :key="index" 
+                <div v-for="(item, index) in listRecommend"
+                :class="[ item.reId ? 'itemTwoRightContentMidl': 'itemTwoRightContentBigL' ]"
+                :key="index"
                 class="cpt">
                     <a href="#" target="_blank" class="itemZA">
                         <div class="play_btn">{{item.reTitle}}</div>

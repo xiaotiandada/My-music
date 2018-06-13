@@ -6,7 +6,7 @@
           <b>精选</b> 歌单
         </h3>
         <div class="itemTwoLeftTextMenu">
-          <span 
+          <span
           v-for="(item, index) in listTabTitle"
           :key="index"
           @mouseenter="toogleTab(index)"
@@ -14,7 +14,7 @@
           :class="{ tabActive : index === listTabIndex}">{{item}}</span>
            <!-- tab-active -->
         </div>
-        <a href="#" target="_blank" class="moreR palyAll">
+        <a href="/songlist" target="_blank" class="moreR palyAll">
           <i class="icon-play"></i> 全部播放
         </a>
       </div>
@@ -39,7 +39,7 @@
         </li>
       </ul>
     </div>
-  
+
     <div class="pages">
       <div class="pagesCenter">
         <a href="#" class="pages-prev">上一页</a>
@@ -48,7 +48,7 @@
         <a href="#" class="pages-next">下一页</a>
       </div>
     </div>
-    
+
   </div>
 </template>
 
@@ -77,10 +77,10 @@
         this.listTabIndex = index
       }
     }
-  
+
   }
 </script>
 
 <style>
-  
+
 </style>

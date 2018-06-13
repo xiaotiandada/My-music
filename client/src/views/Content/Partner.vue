@@ -4,7 +4,7 @@
             <h3 class="hzhb">
                 <b>合作</b> 伙伴
             </h3>
-            <a href="#" target="_blank" class="moreRR">更多</a>
+            <a href="/songlist" target="_blank" class="moreRR">更多</a>
         </div>
         <div class="itemContent">
             <ul>
@@ -17,7 +17,7 @@
                 </li>
             </ul>
         </div>
-    
+
     </div>
 </template>
 
@@ -33,5 +33,5 @@
 </script>
 
 <style>
-    
+
 </style>

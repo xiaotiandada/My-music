@@ -39,10 +39,10 @@ export default new Vuex.Store({
       commit('setUser', user)
     },
     setadminToken({ commit }, token) {
-      commit('setToken', token)
+      commit('setadminToken', token)
     },
     setadminUser({ commit }, user) {
-      commit('setUser', user)
+      commit('setadminUser', user)
     }
   }
 })

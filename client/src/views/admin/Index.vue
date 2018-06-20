@@ -12,11 +12,27 @@
   import Sidebar from './Sidebar/Index'
   import Navbar from '@/views/admin/layout/components/Navbar.vue'
   import AppMain from '@/views/admin/layout/components/AppMain.vue'
+import { mapState } from 'vuex'
   export default {
     components: {
       Sidebar,
       Navbar,
       AppMain
+    },
+    created() {
+      this.routerOut()
+    },
+    computed: {
+      ...mapState([
+        'adminIsUserLoggedIn'
+      ])
+    },
+    methods: {
+      routerOut: function() {
+        if (!this.adminIsUserLoggedIn) {
+          this.$router.push({ name: 'adminlogin' })
+        }
+      }
     }
   }
 </script>

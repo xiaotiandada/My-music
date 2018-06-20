@@ -97,7 +97,7 @@ export const constantRouterMap = [{
   hidden: false,
   children: [{
     path: 'index',
-    name: 'about',
+    name: 'users',
     component: () =>
         import('@/views/admin/User/Index'),
     meta: {

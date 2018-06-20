@@ -64,7 +64,7 @@ export default {
             .then(function(response) {
               console.log(response)
               if (response.data.success) {
-                _this.$store.dispatch('setadminUser', response.data.userName)                
+                _this.$store.dispatch('setadminUser', response.data.userName)
                 _this.$store.dispatch('setadminToken', response.data.token)
                 _this.$router.push({ name: 'admin' })
                 _this.$refs[formName].resetFields()

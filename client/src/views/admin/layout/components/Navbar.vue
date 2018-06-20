@@ -7,28 +7,33 @@
           <i class="el-icon-caret-bottom"></i>
         </div>
         <el-dropdown-menu slot="dropdown">
-          <router-link to="/admin">
+          <a>
             <el-dropdown-item>个人中心</el-dropdown-item>
-          </router-link>
-           <router-link to="/admin">
+          </a>
+          <a @click="adminout">
             <el-dropdown-item>退出登录</el-dropdown-item>
-          </router-link>
+          </a>
         </el-dropdown-menu>
       </el-dropdown>
     </el-menu>
   </div>
 </template>
-<script>
 
-export default {
-  data() {
-    return {
+<script>
+  export default {
+    data() {
+      return {}
+    },
+    methods: {
+      adminout: function() {
+        this.$store.dispatch('setadminToken', null)
+        this.$store.dispatch('setadminUser', null)
+        this.$router.push({ name: 'adminlogin' })
+      }
     }
-  },
-  methods: {
   }
-}
 </script>
 
 <style>
+  
 </style>

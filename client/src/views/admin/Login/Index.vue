@@ -11,7 +11,7 @@
         <el-input type="password" v-model="ruleForm2.pass" auto-complete="off" placeholder="password" ></el-input>
       </el-form-item>
       <el-form-item label-width="0px">
-        <el-button class="logButton" type="primary" @click="adminLogin('ruleForm2')">登陆</el-button>
+        <el-button class="logButton" type="primary" @click="subadminLogin('ruleForm2')">登陆</el-button>
       </el-form-item>
     </el-form>
   </div>
@@ -20,7 +20,6 @@
 <script>
 import AuthenticationService from '@/services/AuthenticationService'
 export default {
-  name: 'AdminLogin',
   data() {
     const validateUserName = (rule, value, callback) => {
       if (value === '') {
@@ -52,7 +51,7 @@ export default {
     }
   },
   methods: {
-    adminLogin(formName) {
+    subadminLogin(formName) {
       const _this = this
       this.$refs[formName].validate((valid) => {
         if (valid) {

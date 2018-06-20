@@ -1,11 +1,11 @@
 <template>
       <div class="logfrom">
         <el-form label-position="left" :model="ruleForm2" status-icon :rules="rules2" ref="ruleForm2" class="demo-ruleForm">
-          <el-form-item class="logInput" prop="username">
+          <el-form-item class="logInput" prop="userName">
             <span class="logSpan">账号</span>
             <el-input  type="text" v-model="ruleForm2.userName" auto-complete="off" placeholder="username" ></el-input>
           </el-form-item>
-          <el-form-item class="logInput"  prop="password">
+          <el-form-item class="logInput"  prop="pass">
             <span class="logSpan">密码</span>
             <el-input type="password" v-model="ruleForm2.pass" auto-complete="off" placeholder="password" ></el-input>
           </el-form-item>
@@ -15,7 +15,6 @@
           </el-form-item>
           <el-form-item label-width="0px">
             <el-button class="logButton" type="primary" @click="submitForm('ruleForm2')">注册</el-button>
-            <!-- <el-button @click="resetForm('ruleForm2')">重置</el-button> -->
           </el-form-item>
         </el-form>
       </div>
@@ -28,7 +27,7 @@ export default {
   data() {
     const validateUserName = (rule, value, callback) => {
       if (value === '') {
-        callback(new Error('请输入密码'))
+        callback(new Error('请输入帐号'))
       } else {
         callback()
       }
@@ -72,44 +71,30 @@ export default {
     }
   },
   methods: {
-    async submitForm(formName) {
-      try {
-        const response = await AuthenticationService.userRegister({
-          userName: this.ruleForm2.userName,
-          pass: this.ruleForm2.pass
-        })
-
-        console.log(response.data)
-        if (response.data.success) {
-          this.$emit('clickHideShowReg', false)
+    submitForm(formName) {
+      const _this = this
+      this.$refs[formName].validate((valid) => {
+        if (valid) {
+          const data = {
+            userName: this.ruleForm2.userName,
+            pass: this.ruleForm2.pass
+          }
+          AuthenticationService.userRegister(data)
+            .then(function(response) {
+              console.log(response.data)
+              if (response.data.success) {
+                _this.$emit('clickHideShowReg', false)
+                _this.$refs[formName].resetFields()
+              }
+            })
+            .catch(function(err) {
+              console.log(err)
+            })
+        } else {
+          console.log('error submit!!')
+          return false
         }
-      } catch (error) {
-        console.log(error)
-      }
-
-      // this.$refs[formName].validate((valid) => {
-      //   if (valid) {
-      //     AuthenticationService.userRegister({
-      //       userName: this.ruleForm2.userName,
-      //       pass: this.ruleForm2.pass
-      //     })
-      //       .then(function(response) {
-      //         console.log(response.data)
-      //         if (response.data.success) {
-      //           this.$emit('clickHideShowReg', false)
-      //         }
-      //       })
-      //       .catch(function(err) {
-      //         console.log(err)
-      //       })
-      //   } else {
-      //     console.log('error submit!!')
-      //     return false
-      //   }
-      // })
-    },
-    resetForm(formName) {
-      this.$refs[formName].resetFields()
+      })
     }
   }
 }

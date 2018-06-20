@@ -38,4 +38,8 @@
   .item4 {
     background-image: url(../../public/img/banner4.jpg);
   }
+  .el-carousel{
+    width: 100%;
+    min-width: 1000px;
+  }
 </style>

@@ -24,6 +24,7 @@
     "v-charts": "^1.16.19",
     "vodal": "^2.3.3",
     "vue": "^2.5.2",
+    "vue-gemini-scrollbar": "^2.0.0",
     "vue-lottie": "^0.2.1",
     "vue-router": "^3.0.1",
     "vuex": "^3.0.1",

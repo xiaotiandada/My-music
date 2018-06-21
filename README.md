@@ -16,9 +16,7 @@
 
 个人练手项目(也是叫期末作业2333～！～)
 
-> API [网易云音乐 NodeJS 版 API](https://binaryify.github.io/NeteaseCloudMusicApi)
-
-> ### [在线演示地址](123.207.60.132:8081)
+> [在线演示地址](123.207.60.132:8081)
 
 
 ## installation

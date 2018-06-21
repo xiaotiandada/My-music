@@ -24,88 +24,100 @@ import Admin from '@/views/admin/Index'
   }
 **/
 
-export const constantRouterMap = [{
-  path: '/',
-  name: 'Index',
-  component: Index
-},
-{
-  path: '/adminlogin',
-  name: 'adminlogin',
-  component: AdminLogin
-},
-{
-  path: '/songlist',
-  name: 'songlist',
-  component: SongList
-},
-{
-  path: '/songplay',
-  name: 'songplay',
-  component: Songplay
-},
-{
-  path: '/admin',
-  name: 'admin',
-  component: Admin,
-  redirect: '/admin/index',
-  hidden: false,
-  children: [{
-    path: 'index',
-    name: 'Dashboard',
-    component: () =>
+export const constantRouterMap = [
+  {
+    path: '/404',
+    component: () => import('@/views/errorPage/404'),
+    hidden: true
+  },
+  {
+    path: '/401',
+    component: () => import('@/views/errorPage/401'),
+    hidden: true
+  },
+  {
+    path: '/',
+    name: 'Index',
+    component: Index
+  },
+  {
+    path: '/adminlogin',
+    name: 'adminlogin',
+    component: AdminLogin
+  },
+  {
+    path: '/songlist',
+    name: 'songlist',
+    component: SongList
+  },
+  {
+    path: '/songplay',
+    name: 'songplay',
+    component: Songplay
+  },
+  {
+    path: '/admin',
+    name: 'admin',
+    component: Admin,
+    redirect: '/admin/index',
+    hidden: false,
+    children: [{
+      path: 'index',
+      name: 'Dashboard',
+      component: () =>
         import('@/views/admin/Dashboard/Index'),
-    meta: {
-      title: '后台首页',
-      icon: 'example'
-    }
-  }]
-},
-{
-  path: '/form',
-  component: Admin,
-  hidden: false,
-  children: [{
-    path: 'index',
-    name: 'form',
-    component: () =>
+      meta: {
+        title: '后台首页',
+        icon: 'example'
+      }
+    }]
+  },
+  {
+    path: '/form',
+    component: Admin,
+    hidden: false,
+    children: [{
+      path: 'index',
+      name: 'form',
+      component: () =>
         import('@/views/admin/from/Index'),
-    meta: {
-      title: '用户管理',
-      icon: 'table'
-    }
-  }]
-},
-{
-  path: '/about',
-  component: Admin,
-  hidden: false,
-  children: [{
-    path: 'index',
-    name: 'about',
-    component: () =>
+      meta: {
+        title: '用户管理',
+        icon: 'table'
+      }
+    }]
+  },
+  {
+    path: '/about',
+    component: Admin,
+    hidden: false,
+    children: [{
+      path: 'index',
+      name: 'about',
+      component: () =>
         import('@/views/admin/About/Index'),
-    meta: {
-      title: '关于我们',
-      icon: 'table'
-    }
-  }]
-},
-{
-  path: '/users',
-  component: Admin,
-  hidden: false,
-  children: [{
-    path: 'index',
-    name: 'users',
-    component: () =>
+      meta: {
+        title: '关于我们',
+        icon: 'table'
+      }
+    }]
+  },
+  {
+    path: '/users',
+    component: Admin,
+    hidden: false,
+    children: [{
+      path: 'index',
+      name: 'users',
+      component: () =>
         import('@/views/admin/User/Index'),
-    meta: {
-      title: '个人中心',
-      icon: 'table'
-    }
-  }]
-}
+      meta: {
+        title: '个人中心',
+        icon: 'table'
+      }
+    }]
+  },
+  { path: '*', redirect: '/404', hidden: true }
 ]
 
 export default new Router({

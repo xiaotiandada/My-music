@@ -54,31 +54,31 @@
         listLink: [
           {
             liSrc: 'http://www.kugou.com/about/aboutus.html',
-            liTitle: '关于酷狗'
+            liTitle: '芊芊音乐网'
           },
           {
             liSrc: 'http://www.kugou.com/about/aboutus.html',
-            liTitle: '关于酷狗'
+            liTitle: '芊芊音乐网'
           },
           {
             liSrc: 'http://www.kugou.com/about/aboutus.html',
-            liTitle: '关于酷狗'
+            liTitle: '芊芊音乐网'
           },
           {
             liSrc: 'http://www.kugou.com/about/aboutus.html',
-            liTitle: '关于酷狗'
+            liTitle: '芊芊音乐网'
           },
           {
             liSrc: 'http://www.kugou.com/about/aboutus.html',
-            liTitle: '关于酷狗'
+            liTitle: '芊芊音乐网'
           },
           {
             liSrc: 'http://www.kugou.com/about/aboutus.html',
-            liTitle: '关于酷狗'
+            liTitle: '芊芊音乐网'
           },
           {
             liSrc: 'http://www.kugou.com/about/aboutus.html',
-            liTitle: '关于酷狗'
+            liTitle: '芊芊音乐网'
           }
         ],
         isShow: false,
